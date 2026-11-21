@@ -9,32 +9,47 @@ from ..debug import dump
 from ..normalize import Offer, parse_price, sim_from_text, norm_color
 
 SITE = "TrenDevice"
-GRADE_RE = re.compile(r"^(A\+|A|B|C)\s+\w")
-EURO_RE = re.compile(r"^€\s?\d")
+
+
+PRICE_ALL = re.compile(r"€\s?(\d{1,3}(?:\.\d{3})*,\d{2})")
+GRADE_FIND = re.compile(r"(?:^|[\s|])(A\+ Come nuovo|A Eccellente|B Buono|C Smart|A\+|A|B|C)(?=$|[\s|])")
 
 
 def parse_listing(text: str, model: str) -> list[dict]:
-    """Ogni scheda: <modello> / <NN GB> / colore / SIM / grado / 'A partire da' / €prezzo pieno / €prezzo promo."""
-    lines = [l.strip() for l in text.splitlines() if l.strip()]
+    """Schede elenco. Funziona sia con un campo per riga sia con campi separati da ' | '.
+    Es.: 'iPhone 15 Pro | 128 GB | Titanio blu | A Eccellente | Sim Card (include slot sim) | A partire da | €669,00 | €619,00'"""
+    flat = re.sub(r"[ \t]*\n[ \t]*", " | ", text)
+    flat = re.sub(r"(\s*\|\s*)+", " | ", flat)
+    starts = [m for m in re.finditer(re.escape(model) + r"(?! Max| Plus)\s*\|?\s*(\d+)\s*(GB|TB)\b", flat)]
     items = []
-    for i, line in enumerate(lines):
-        if line != model or i + 1 >= len(lines) or not re.match(r"^\d+ GB$", lines[i + 1]):
-            continue
-        it = {"storage": int(lines[i + 1].split()[0]), "color": "", "sim": "", "grade": "", "prices": [], "preorder": False}
-        for tok in lines[i + 2:i + 14]:
-            if tok == model or tok in ("Promo",) or tok.startswith("Risparmia"):
-                break
-            if tok.lower() in ("a partire da", "da"):
+    for i, m in enumerate(starts):
+        end = starts[i + 1].start() if i + 1 < len(starts) else m.end() + 400
+        chunk = flat[m.end():end]
+        cut = re.search(r"\|\s*(Promo|Risparmia|TrenDevice Club|Vendi il tuo usato)\b", chunk)
+        if cut:
+            chunk = chunk[:cut.start()]
+        toks = [t.strip() for t in chunk.split("|") if t.strip()]
+        storage = int(m.group(1)) * (1000 if m.group(2) == "TB" else 1)
+        it = {"storage": storage, "color": "", "sim": "", "grade": "", "prices": [], "preorder": False}
+        for tok in toks:
+            low = tok.lower()
+            prices = [parse_price(p) for p in PRICE_ALL.findall(tok)]
+            if prices:
+                it["prices"] += prices
                 continue
-            if EURO_RE.match(tok):
-                it["prices"].append(parse_price(tok))
-            elif GRADE_RE.match(tok):
-                it["grade"] = tok
-            elif "sim" in tok.lower():
-                it["sim"] = tok
-            elif tok.lower() == "preordina":
+            if low in ("a partire da", "da"):
+                continue
+            if "preordina" in low:
                 it["preorder"] = True
-            elif not it["color"] and not it["prices"]:
+                continue
+            if "sim" in low:
+                it["sim"] = tok
+                continue
+            g = GRADE_FIND.search(tok)
+            if g and len(tok) <= 16 and not it["grade"]:
+                it["grade"] = g.group(1)
+                continue
+            if not it["color"] and not it["prices"] and len(tok) < 40:
                 it["color"] = tok
         if it["prices"] and it["grade"]:
             items.append(it)

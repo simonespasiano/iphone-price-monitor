@@ -91,6 +91,16 @@ def _reject_cookies(page):
             pass
 
 
+BLOCK_RE = re.compile(r"verifica di sicurezza|Sorry, this page is not available|Ci siamo quasi|Just a moment|Attention Required", re.I)
+
+
+def _blocked(page) -> bool:
+    try:
+        return bool(BLOCK_RE.search(page.title() + " " + page.inner_text("body", timeout=5000)[:600]))
+    except Exception:
+        return False
+
+
 def _text(page) -> str:
     return page.inner_text("body", timeout=15000)
 
@@ -111,9 +121,12 @@ def scrape(page, cfg: dict) -> tuple[list[Offer], list[dict]]:
                         page.goto(p["url"], wait_until="domcontentloaded", timeout=45000)
                         page.wait_for_timeout(2500)
                         _reject_cookies(page)
-                        if "Just a moment" in page.title() or "Attention Required" in page.title():
-                            runs.append(dict(site=SITE, target=target, status="bloccato", n=0, error="anti-bot", secs=round(time.time() - t0)))
-                            continue
+                        if _blocked(page):
+                            # protezione anti-bot: non insistere, si riprova al prossimo giro
+                            dump(page, f"backmarket bloccato {target}")
+                            runs.append(dict(site=SITE, target="*", status="bloccato", n=0,
+                                             error="verifica anti-bot del sito", secs=round(time.time() - t0)))
+                            return offers, runs
                         ok = _click_option(page, f"{storage} GB") and _click_option(page, grade) and _click_option(page, sim)
                         txt = _text(page)
                         summ = parse_summary(txt)
