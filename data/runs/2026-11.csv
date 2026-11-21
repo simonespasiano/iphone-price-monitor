@@ -4,3 +4,34 @@ ts,site,target,status,n,error,secs
 2026-11-21T20:00:00Z,Amazon,manuale,ok,46,,0
 2026-11-21T20:00:00Z,Back Market,manuale,ok,17,,0
 2026-11-21T20:00:00Z,TrenDevice,manuale,ok,6,,0
+2026-11-21T21:00:00Z,Amazon,https://www.amazon.it/s?k=iphone+16+pro+128gb+ricondizionato,ok,0,,3
+2026-11-21T21:00:00Z,Amazon,https://www.amazon.it/s?k=iphone+16+pro+256gb+ricondizionato,ok,0,,3
+2026-11-21T21:00:00Z,Amazon,https://www.amazon.it/s?k=iphone+15+pro+128gb+ricondizionato,ok,0,,3
+2026-11-21T21:00:00Z,Amazon,https://www.amazon.it/s?k=iphone+15+pro+256gb+ricondizionato,ok,0,,3
+2026-11-21T21:00:00Z,Amazon,B0DHYDBXJ9,vuoto,0,,15
+2026-11-21T21:00:00Z,Amazon,B0DHYFYZ5K,ok,1,,5
+2026-11-21T21:00:00Z,Amazon,B0DHYF2KQG,ok,1,,6
+2026-11-21T21:00:00Z,Amazon,B0DHYDMJ1W,vuoto,0,,5
+2026-11-21T21:00:00Z,Amazon,B0CVJ5WF3K,vuoto,0,,5
+2026-11-21T21:00:00Z,Amazon,B0CVJ2RLP5,vuoto,0,,5
+2026-11-21T21:00:00Z,Amazon,B0CVK3WMT3,vuoto,0,,5
+2026-11-21T21:00:00Z,Amazon,B0CVJVJNQS,vuoto,0,,5
+2026-11-21T21:00:00Z,Amazon,B0CVJS2V8B,vuoto,0,,5
+2026-11-21T21:00:00Z,Back Market,16pro-128 Eccellente eSIM,vuoto,0,combinazione non disponibile o non letta,8
+2026-11-21T21:00:00Z,Back Market,16pro-128 Eccellente SIM fisica + eSIM,vuoto,0,combinazione non disponibile o non letta,8
+2026-11-21T21:00:00Z,Back Market,16pro-128 Premium eSIM,vuoto,0,combinazione non disponibile o non letta,3
+2026-11-21T21:00:00Z,Back Market,16pro-128 Premium SIM fisica + eSIM,vuoto,0,combinazione non disponibile o non letta,3
+2026-11-21T21:00:00Z,Back Market,16pro-256 Eccellente eSIM,vuoto,0,combinazione non disponibile o non letta,3
+2026-11-21T21:00:00Z,Back Market,16pro-256 Eccellente SIM fisica + eSIM,vuoto,0,combinazione non disponibile o non letta,3
+2026-11-21T21:00:00Z,Back Market,16pro-256 Premium eSIM,vuoto,0,combinazione non disponibile o non letta,3
+2026-11-21T21:00:00Z,Back Market,16pro-256 Premium SIM fisica + eSIM,vuoto,0,combinazione non disponibile o non letta,3
+2026-11-21T21:00:00Z,Back Market,15pro-128 Eccellente eSIM,vuoto,0,combinazione non disponibile o non letta,3
+2026-11-21T21:00:00Z,Back Market,15pro-128 Eccellente SIM fisica + eSIM,vuoto,0,combinazione non disponibile o non letta,3
+2026-11-21T21:00:00Z,Back Market,15pro-128 Premium eSIM,vuoto,0,combinazione non disponibile o non letta,3
+2026-11-21T21:00:00Z,Back Market,15pro-128 Premium SIM fisica + eSIM,vuoto,0,combinazione non disponibile o non letta,3
+2026-11-21T21:00:00Z,Back Market,15pro-256 Eccellente eSIM,vuoto,0,combinazione non disponibile o non letta,3
+2026-11-21T21:00:00Z,Back Market,15pro-256 Eccellente SIM fisica + eSIM,vuoto,0,combinazione non disponibile o non letta,3
+2026-11-21T21:00:00Z,Back Market,15pro-256 Premium eSIM,vuoto,0,combinazione non disponibile o non letta,3
+2026-11-21T21:00:00Z,Back Market,15pro-256 Premium SIM fisica + eSIM,vuoto,0,combinazione non disponibile o non letta,3
+2026-11-21T21:00:00Z,TrenDevice,iPhone 16 Pro,vuoto,0,,6
+2026-11-21T21:00:00Z,TrenDevice,iPhone 15 Pro,vuoto,0,,6
