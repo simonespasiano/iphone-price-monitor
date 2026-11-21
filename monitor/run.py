@@ -10,6 +10,7 @@ from datetime import datetime, timezone
 
 from .alerts import load_state, save_state, select_new_hits, send
 from .build_site import build
+from . import telegram
 from .debug import reset as reset_debug
 from .config import load_config
 from .rules import is_eligible
@@ -66,6 +67,8 @@ def main(argv=None) -> int:
         hits = select_new_hits(offers, cfg, now, state)
         sent = send(hits, cfg, now) if hits else []
         print("avvisi:", sent or ("nessuna offerta sotto soglia" if not hits else "nessun canale configurato"))
+        if cfg["alerts"].get("telegram_every_run") and telegram.enabled(cfg):
+            print("riepilogo:", telegram.send_text(telegram.build_report(offers, runs, hits, cfg)))
         # lo stato anti-ripetizione si aggiorna solo se l'avviso è partito davvero
         save_state(state, hits if any(x.split()[-1].startswith("2") for x in sent) else [], now)
 

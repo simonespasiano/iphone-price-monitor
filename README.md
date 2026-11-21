@@ -52,6 +52,14 @@ primo controllo. In alternativa, a mano:
 3. Nel repository: *Settings → Secrets and variables → Actions → New repository secret*:
    `TELEGRAM_BOT_TOKEN` e `TELEGRAM_CHAT_ID`.
 
+4. **Prova:** *Actions → Test Telegram → Run workflow*. Ricevi un messaggio di prova e un
+   riepilogo di esempio; se qualcosa non va, il log del job dice cosa correggere
+   (secret mancante, token non valido, chat ID errato o bot non avviato).
+
+Con `telegram_every_run: true` in `config.yaml` ricevi un **riepilogo a ogni verifica**
+(stato dei siti e miglior prezzo per ciascuna soglia, 🔥 se sotto soglia) più un messaggio
+separato con i link quando c'è un'offerta nuova. Con `false` ricevi solo gli avvisi.
+
 Senza i secret gli avvisi arrivano solo come issue GitHub.
 
 ## Analisi da terminale

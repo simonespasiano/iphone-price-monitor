@@ -1,0 +1,34 @@
+name: Test Telegram
+
+# Avvio manuale: Actions → Test Telegram → Run workflow.
+# Controlla i secret, verifica il token e invia un messaggio di prova.
+# Con "riepilogo" attivo manda anche un riepilogo di esempio costruito sull'ultima verifica salvata.
+on:
+  workflow_dispatch:
+    inputs:
+      riepilogo:
+        description: "Invia anche un riepilogo di esempio dall'ultima verifica salvata"
+        type: boolean
+        default: true
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install requests pyyaml
+      - name: Messaggio di prova
+        run: python -m monitor.telegram
+      - name: Riepilogo di esempio
+        if: ${{ inputs.riepilogo }}
+        run: python -m monitor.telegram_sample

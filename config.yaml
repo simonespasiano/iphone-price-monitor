@@ -77,5 +77,6 @@ sources:
 alerts:
   github_issue: true          # apre/aggiorna una issue con etichetta "offerta"
   telegram: true              # attivo solo se esistono i secret TELEGRAM_BOT_TOKEN e TELEGRAM_CHAT_ID
+  telegram_every_run: true    # riepilogo su Telegram a ogni verifica (false = solo avvisi sotto soglia)
   repeat_after_hours: 24      # non ripete lo stesso avviso prima di N ore...
   repeat_if_drop_eur: 5       # ...salvo un ulteriore calo di almeno N euro

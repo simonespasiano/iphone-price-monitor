@@ -10,6 +10,7 @@ import requests
 from .config import DATA, model_info
 from .normalize import SIM_LABEL
 from .rules import matching_threshold
+from . import telegram
 
 STATE = DATA / "alert_state.json"
 
@@ -63,14 +64,8 @@ def send(hits, cfg, now: datetime) -> list[str]:
         r = requests.post(f"https://api.github.com/repos/{repo}/issues", headers=h, timeout=20,
                           json={"title": title, "body": body, "labels": ["offerta"]})
         done.append(f"issue {r.status_code}")
-    bot, chat = os.getenv("TELEGRAM_BOT_TOKEN"), os.getenv("TELEGRAM_CHAT_ID")
-    if cfg["alerts"].get("telegram") and bot and chat:
-        text = title + "\n\n" + "\n".join(
-            f"• {model_info(cfg, o.model)['label']} {o.grade} {SIM_LABEL[o.sim]} {o.color} — {o.price:.2f} € — {o.seller} ({o.site})\n{o.url}"
-            for o, _ in hits[:8])
-        r = requests.post(f"https://api.telegram.org/bot{bot}/sendMessage", timeout=20,
-                          json={"chat_id": chat, "text": text, "disable_web_page_preview": True})
-        done.append(f"telegram {r.status_code}")
+    if telegram.enabled(cfg):
+        done.append(telegram.send_text(telegram.format_hits(hits, cfg, title)))
     return done
 
 
