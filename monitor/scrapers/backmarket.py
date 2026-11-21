@@ -8,6 +8,7 @@ from __future__ import annotations
 import re
 import time
 
+from ..debug import dump
 from ..normalize import Offer, parse_price, sim_from_text, norm_color
 
 SITE = "Back Market"
@@ -132,6 +133,8 @@ def scrape(page, cfg: dict) -> tuple[list[Offer], list[dict]]:
                                 if s2 and s2["grade"] == grade and s2["storage"] == storage:
                                     got = [g for g in got if norm_color(g.color) != norm_color(s2["color"])]
                                     got.append(_offer(key, s2, page.url))
+                        if not got:
+                            dump(page, f"backmarket {target} click={ok}")
                         offers += got
                         runs.append(dict(site=SITE, target=target, status="ok" if got else "vuoto", n=len(got),
                                          error="" if got else "combinazione non disponibile o non letta", secs=round(time.time() - t0)))

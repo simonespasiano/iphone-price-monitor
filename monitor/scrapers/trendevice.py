@@ -5,6 +5,7 @@ import re
 import time
 
 from ..config import model_key
+from ..debug import dump
 from ..normalize import Offer, parse_price, sim_from_text, norm_color
 
 SITE = "TrenDevice"
@@ -71,6 +72,8 @@ def scrape(page, cfg: dict) -> tuple[list[Offer], list[dict]]:
                     grade=it["grade"], price=min(it["prices"]), seller="TrenDevice", price_source="elenco",
                     battery="", url=p["url"], notes="preordine" if it["preorder"] else "",
                 ))
+            if not got:
+                dump(page, f"trendevice {p['model']}", 1500)
             offers += got
             runs.append(dict(site=SITE, target=p["model"], status="ok" if got else "vuoto", n=len(got), error="", secs=round(time.time() - t0)))
         except Exception as e:  # noqa: BLE001

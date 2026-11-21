@@ -5,6 +5,7 @@ import re
 import time
 
 from ..config import model_key
+from ..debug import dump
 from ..normalize import Offer, parse_price, model_from_title, color_from_title, SIM_FISICA
 
 SITE = "Amazon"
@@ -54,6 +55,22 @@ def reject_cookies(page):
         pass
 
 
+def set_location(page, postcode: str) -> str:
+    """Imposta un CAP italiano: senza, dai server esteri Amazon mostra solo le offerte che spediscono all'estero."""
+    try:
+        page.goto("https://www.amazon.it/", wait_until="domcontentloaded", timeout=45000)
+        reject_cookies(page)
+        page.click("#nav-global-location-popover-link", timeout=8000)
+        page.fill("#GLUXZipUpdateInput", postcode, timeout=8000)
+        page.click("#GLUXZipUpdate input, #GLUXZipUpdate", timeout=5000)
+        page.wait_for_timeout(2500)
+        page.reload(wait_until="domcontentloaded")
+        loc = page.locator("#glow-ingress-line2").inner_text(timeout=5000)
+        return loc.strip()
+    except Exception as e:  # noqa: BLE001
+        return f"CAP non impostato: {str(e)[:120]}"
+
+
 def parse_aod(raw: list[dict], model: str, storage: int, color: str, asin: str) -> list[Offer]:
     out = []
     url = f"https://www.amazon.it/dp/{asin}?aod=1"
@@ -97,6 +114,9 @@ def scrape(page, cfg: dict) -> tuple[list[Offer], list[dict]]:
     targets = list(src.get("asins", []))
     known = {t["asin"] for t in targets}
     models = {m["key"]: m for m in cfg["models"]}
+    loc = set_location(page, str(src.get("postcode", "20121")))
+    print(f"[amazon] consegna: {loc}", flush=True)
+    runs.append(dict(site=SITE, target="cap", status="ok" if src.get("postcode", "20121") in loc else "avviso", n=0, error=loc[:150], secs=0))
 
     for url in src.get("searches", []):
         t0 = time.time()
@@ -107,7 +127,10 @@ def scrape(page, cfg: dict) -> tuple[list[Offer], list[dict]]:
                 runs.append(dict(site=SITE, target=url, status="bloccato", n=0, error="captcha", secs=round(time.time() - t0)))
                 continue
             page.wait_for_timeout(2500)
-            found = discover(page.evaluate(SEARCH_JS), cfg, known)
+            raw_s = page.evaluate(SEARCH_JS)
+            if not raw_s:
+                dump(page, f"amazon ricerca {url}")
+            found = discover(raw_s, cfg, known)
             targets += found
             runs.append(dict(site=SITE, target=url, status="ok", n=len(found), error="", secs=round(time.time() - t0)))
         except Exception as e:  # noqa: BLE001
@@ -130,6 +153,8 @@ def scrape(page, cfg: dict) -> tuple[list[Offer], list[dict]]:
             raw = page.evaluate(AOD_JS)
             m = models[t["model"]]
             got = parse_aod(raw, t["model"], int(m["storage"]), t.get("color", ""), t["asin"])
+            if len(got) < 3:
+                dump(page, f"amazon {t['asin']} ({len(got)} offerte)")
             offers += got
             runs.append(dict(site=SITE, target=t["asin"], status="ok" if got else "vuoto", n=len(got), error="", secs=round(time.time() - t0)))
         except Exception as e:  # noqa: BLE001
