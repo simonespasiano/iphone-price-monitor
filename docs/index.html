@@ -200,7 +200,9 @@ function renderKpis(best){
   const cur = best[keys[keys.length-1]], prices = keys.map(k => best[k][5]);
   const dayAgo = keys.filter(k => Math.abs(Date.parse(cur[0]) - Date.parse(k) - 24*3600e3) <= 3600e3).map(k => best[k][5])[0];
   const ths = thresholdsFor(st.model, st.sim, st.grade);
-  const th = ths.length ? Math.max(...ths.map(t => t.price)) : null;
+  // soglia che si applica all'offerta migliore (stessa SIM e grado sufficiente); altrimenti la più vicina del filtro
+  const own = ths.filter(t => simOk(t.sim, cur[3]) && cur[4] >= RANK[t.grade]);
+  const th = own.length ? Math.max(...own.map(t => t.price)) : (ths.length ? Math.max(...ths.map(t => t.price)) : null);
   const gap = th != null ? cur[5] - th : null;
   const under = th != null ? prices.filter(p => p <= th).length : null;
   const ch = dayAgo != null ? cur[5] - dayAgo : null;
