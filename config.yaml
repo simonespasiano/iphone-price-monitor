@@ -1,0 +1,80 @@
+# Configurazione del monitor prezzi iPhone ricondizionati.
+# Modifica qui modelli, soglie, URL e requisiti minimi: il workflow orario legge questo file.
+
+timezone: Europe/Rome
+
+# Requisiti minimi perché un'offerta sia "idonea" (eligible)
+requirements:
+  min_grade: eccellente        # accettabile < buono < ottimo < eccellente < premium
+  min_seller_positive: 80      # % valutazioni positive (Amazon). Offerte senza dato: idonee ma segnalate
+  warranty_months: 12
+
+# Modelli monitorati. key = identificativo stabile usato in dati e dashboard
+models:
+  - key: 16pro-128
+    label: iPhone 16 Pro 128GB
+    model: iPhone 16 Pro
+    storage: 128
+  - key: 16pro-256
+    label: iPhone 16 Pro 256GB
+    model: iPhone 16 Pro
+    storage: 256
+  - key: 15pro-128
+    label: iPhone 15 Pro 128GB
+    model: iPhone 15 Pro
+    storage: 128
+  - key: 15pro-256
+    label: iPhone 15 Pro 256GB
+    model: iPhone 15 Pro
+    storage: 256
+
+# Soglie "offerta interessante" (prezzo totale). sim: esim | fisica | any ; grade: grado minimo
+# op: "<" oppure "<="
+thresholds:
+  - {model: 16pro-128, sim: esim,   grade: eccellente, op: "<",  price: 600}
+  - {model: 16pro-128, sim: fisica, grade: eccellente, op: "<=", price: 660}
+  - {model: 16pro-128, sim: any,    grade: premium,    op: "<=", price: 680}
+  - {model: 16pro-256, sim: any,    grade: eccellente, op: "<=", price: 700}
+  - {model: 15pro-256, sim: fisica, grade: eccellente, op: "<=", price: 590}
+  - {model: 15pro-128, sim: any,    grade: eccellente, op: "<",  price: 550}
+
+sources:
+  amazon:
+    enabled: true
+    # Gli ASIN noti vengono sempre controllati (elenco "tutte le offerte", ?aod=1).
+    # I modelli venduti su Amazon.it con questi ASIN hanno SIM fisica (+ eSIM).
+    asins:
+      - {asin: B0DHYDBXJ9, model: 16pro-128, color: Titanio Nero}
+      - {asin: B0DHYFYZ5K, model: 16pro-128, color: Titanio Naturale}
+      - {asin: B0DHYF2KQG, model: 16pro-128, color: Titanio Sabbia}
+      - {asin: B0DHYDMJ1W, model: 16pro-256, color: Titanio Nero}
+      - {asin: B0CVJ5WF3K, model: 15pro-128, color: Titanio Blu}
+      - {asin: B0CVJ2RLP5, model: 15pro-128, color: Titanio Nero}
+      - {asin: B0CVK3WMT3, model: 15pro-256, color: Titanio Blu}
+      - {asin: B0CVJVJNQS, model: 15pro-256, color: Titanio Nero}
+      - {asin: B0CVJS2V8B, model: 15pro-256, color: Titanio Naturale}
+    # Ricerche per scoprire nuovi colori/ASIN (aggiunti automaticamente se il titolo combacia)
+    searches:
+      - https://www.amazon.it/s?k=iphone+16+pro+128gb+ricondizionato
+      - https://www.amazon.it/s?k=iphone+16+pro+256gb+ricondizionato
+      - https://www.amazon.it/s?k=iphone+15+pro+128gb+ricondizionato
+      - https://www.amazon.it/s?k=iphone+15+pro+256gb+ricondizionato
+  backmarket:
+    enabled: true
+    # Pagina modello: lo scraper seleziona memoria, grado e SIM, poi legge il prezzo FINALE
+    pages:
+      - {url: "https://www.backmarket.it/it-it/p/iphone-16-pro", models: [16pro-128, 16pro-256]}
+      - {url: "https://www.backmarket.it/it-it/p/iphone-15-pro", models: [15pro-128, 15pro-256]}
+    grades: [Eccellente, Premium]
+    sims: ["eSIM", "SIM fisica + eSIM"]
+  trendevice:
+    enabled: true
+    pages:
+      - {url: "https://www.trendevice.com/prodotti/iphone/serie-16/iphone-16-pro/", model: iPhone 16 Pro}
+      - {url: "https://www.trendevice.com/prodotti/iphone/serie-15/iphone-15-pro/", model: iPhone 15 Pro}
+
+alerts:
+  github_issue: true          # apre/aggiorna una issue con etichetta "offerta"
+  telegram: true              # attivo solo se esistono i secret TELEGRAM_BOT_TOKEN e TELEGRAM_CHAT_ID
+  repeat_after_hours: 24      # non ripete lo stesso avviso prima di N ore...
+  repeat_if_drop_eur: 5       # ...salvo un ulteriore calo di almeno N euro
