@@ -38,7 +38,7 @@ def main(argv=None) -> int:
     if "--print" in argv:
         print(text)
         return 0
-    res = telegram.send_text(text)
+    res = telegram.send_text(text, as_html=True)
     print(res)
     return 0 if res == "telegram 200" else 1
 

@@ -57,7 +57,7 @@ primo controllo. In alternativa, a mano:
    (secret mancante, token non valido, chat ID errato o bot non avviato).
 
 Con `telegram_every_run: true` in `config.yaml` ricevi un **riepilogo a ogni verifica**
-(stato dei siti e miglior prezzo per ciascuna soglia, 🔥 se sotto soglia) più un messaggio
+(esito, miglior prezzo per modello con link «apri offerta» e distanza dall’obiettivo, stato dei siti) più un messaggio
 separato con i link quando c'è un'offerta nuova. Con `false` ricevi solo gli avvisi.
 
 Senza i secret gli avvisi arrivano solo come issue GitHub.

@@ -65,7 +65,7 @@ def send(hits, cfg, now: datetime) -> list[str]:
                           json={"title": title, "body": body, "labels": ["offerta"]})
         done.append(f"issue {r.status_code}")
     if telegram.enabled(cfg):
-        done.append(telegram.send_text(telegram.format_hits(hits, cfg, title)))
+        done.append(telegram.send_text(telegram.format_hits(hits, cfg, title), as_html=True))
     return done
 
 

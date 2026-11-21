@@ -4,6 +4,7 @@ Test manuale:  python -m monitor.telegram   (richiede TELEGRAM_BOT_TOKEN e TELEG
 """
 from __future__ import annotations
 
+import html
 import os
 import sys
 from datetime import datetime
@@ -28,17 +29,27 @@ def enabled(cfg: dict) -> bool:
     return bool(cfg["alerts"].get("telegram") and bot and chat)
 
 
-def send_text(text: str) -> str:
-    """Invia un messaggio di testo semplice. Restituisce 'telegram <codice HTTP>'."""
+def send_text(text: str, as_html: bool = False) -> str:
+    """Invia un messaggio (testo semplice o HTML di Telegram). Restituisce 'telegram <codice HTTP>'."""
     bot, chat = credentials()
-    r = requests.post(API.format(token=bot, method="sendMessage"), timeout=20,
-                      json={"chat_id": chat, "text": text[:4000], "disable_web_page_preview": True})
+    payload = {"chat_id": chat, "text": text[:4000], "disable_web_page_preview": True}
+    if as_html:
+        payload["parse_mode"] = "HTML"
+    r = requests.post(API.format(token=bot, method="sendMessage"), timeout=20, json=payload)
     if r.status_code != 200:
         print(f"telegram errore {r.status_code}: {r.text[:300]}", flush=True)
     return f"telegram {r.status_code}"
 
 
 GIORNI = ["lun", "mar", "mer", "gio", "ven", "sab", "dom"]
+
+
+def esc(x) -> str:
+    return html.escape(str(x or ""), quote=True)
+
+
+def link(url: str, label: str = "apri offerta") -> str:
+    return f'<a href="{esc(url)}">{label}</a>' if url else ""
 
 
 def eur(x: float) -> str:
@@ -53,12 +64,12 @@ def _site_status(runs: list[dict]) -> str:
     for site, rs in by_site.items():
         ok = sum(1 for r in rs if r["status"] == "ok")
         if ok == len(rs):
-            parts.append(f"✅ {site}")
+            parts.append(f"✅ {esc(site)}")
         elif ok == 0:
             why = rs[0].get("error") or rs[0].get("status") or "errore"
-            parts.append(f"⛔ {site} non letto ({why})")
+            parts.append(f"⛔ {esc(site)} non letto ({esc(why)})")
         else:
-            parts.append(f"⚠️ {site} letto in parte ({ok} pagine su {len(rs)})")
+            parts.append(f"⚠️ {esc(site)} letto in parte ({ok} pagine su {len(rs)})")
     return "\n".join(parts) or "nessun sito controllato"
 
 
@@ -82,7 +93,7 @@ def build_report(offers, runs, hits, cfg) -> str:
         under_count += under
         rows.append((t, best, under))
 
-    lines = [f"📱 Monitor iPhone · {GIORNI[now.weekday()]} {now:%d/%m} ore {now:%H:%M}"]
+    lines = [f"📱 <b>Monitor iPhone</b> · {GIORNI[now.weekday()]} {now:%d/%m} ore {now:%H:%M}"]
     if hits:
         lines.append(f"🔥 {len(hits)} OFFERTE NUOVE SOTTO L'OBIETTIVO: link nel messaggio qui sotto")
     elif under_count:
@@ -95,7 +106,7 @@ def build_report(offers, runs, hits, cfg) -> str:
         mine = [r for r in rows if r[0]["model"] == m["key"]]
         if not mine:
             continue
-        lines.append(m["label"])
+        lines.append(f"<b>{esc(m['label'])}</b>")
         for t, best, under in mine:
             v = _variant(t)
             head = f"{'🔥' if under else '•'} {v + ': ' if v else ''}"
@@ -104,7 +115,8 @@ def build_report(offers, runs, hits, cfg) -> str:
                 continue
             diff = best.price - t["price"]
             gap = f"{eur(-diff)} sotto ✅" if diff <= 0 else f"mancano {eur(diff)}"
-            lines.append(f"{head}{eur(best.price)} su {best.site} · obiettivo {eur(t['price'])} · {gap}")
+            lines.append(f"{head}<b>{eur(best.price)}</b> su {esc(best.site)} · obiettivo {eur(t['price'])} · {gap}"
+                         + (f" · 👉 {link(best.url)}" if best.url else ""))
         lines.append("")
 
     lines.append("Siti controllati:")
@@ -115,14 +127,14 @@ def build_report(offers, runs, hits, cfg) -> str:
 
 
 def format_hits(hits, cfg, title: str = "") -> str:
-    out = ["🔥 OFFERTA SOTTO L'OBIETTIVO" if len(hits) == 1 else f"🔥 {len(hits)} OFFERTE SOTTO L'OBIETTIVO"]
+    out = ["🔥 <b>OFFERTA SOTTO L'OBIETTIVO</b>" if len(hits) == 1 else f"🔥 <b>{len(hits)} OFFERTE SOTTO L'OBIETTIVO</b>"]
     for o, t in hits[:8]:
         details = " · ".join(x for x in (o.grade, o.color, o.seller) if x)
         out += ["",
-                f"{model_info(cfg, o.model)['label']} · {SIM_LABEL[o.sim]}",
-                f"💶 {eur(o.price)} su {o.site} (obiettivo {eur(t['price'])}, {eur(t['price'] - o.price)} in meno)",
-                details,
-                f"👉 {o.url}"]
+                f"<b>{esc(model_info(cfg, o.model)['label'])} · {esc(SIM_LABEL[o.sim])}</b>",
+                f"💶 <b>{eur(o.price)}</b> su {esc(o.site)} (obiettivo {eur(t['price'])}, {eur(t['price'] - o.price)} in meno)",
+                esc(details),
+                f"👉 {link(o.url, 'Apri l’offerta')}"]
     out += ["", "Prima di comprare controlla batteria, condizioni e garanzia sulla pagina."]
     return "\n".join(out)
 
