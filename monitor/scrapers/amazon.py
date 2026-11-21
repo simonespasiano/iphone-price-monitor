@@ -116,6 +116,8 @@ def scrape(page, cfg: dict) -> tuple[list[Offer], list[dict]]:
     models = {m["key"]: m for m in cfg["models"]}
     loc = set_location(page, str(src.get("postcode", "20121")))
     print(f"[amazon] consegna: {loc}", flush=True)
+    if "non impostato" in loc:
+        dump(page, "amazon home (CAP)", 1200)
     runs.append(dict(site=SITE, target="cap", status="ok" if src.get("postcode", "20121") in loc else "avviso", n=0, error=loc[:150], secs=0))
 
     for url in src.get("searches", []):
