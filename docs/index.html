@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Monitor prezzi iPhone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<style>
+:root{
+  --bg:#f6f7f9;--panel:#ffffff;--ink:#14171c;--muted:#5d6675;--line:#e3e6eb;--accent:#2f6fde;
+  --good:#1a8a4a;--good-bg:#e6f5ec;--bad:#c0392b;--bad-bg:#fbeaea;--warn:#a86b00;--warn-bg:#fff4dc;
+  --s1:#2f6fde;--s2:#d9480f;--s3:#2b8a3e;--s4:#7048e8;--thr:#c0392b;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1216;--panel:#171b21;--ink:#e8ebef;--muted:#9aa3b2;--line:#2a3039;--accent:#6ea0ff;
+  --good:#4cc27a;--good-bg:#14301f;--bad:#ff7a6b;--bad-bg:#3a1c1a;--warn:#f2b84b;--warn-bg:#33270f;
+  --s1:#6ea0ff;--s2:#ff8a4c;--s3:#5fd07e;--s4:#a98bff;--thr:#ff7a6b;}}
+:root[data-theme="dark"]{
+  --bg:#0f1216;--panel:#171b21;--ink:#e8ebef;--muted:#9aa3b2;--line:#2a3039;--accent:#6ea0ff;
+  --good:#4cc27a;--good-bg:#14301f;--bad:#ff7a6b;--bad-bg:#3a1c1a;--warn:#f2b84b;--warn-bg:#33270f;
+  --s1:#6ea0ff;--s2:#ff8a4c;--s3:#5fd07e;--s4:#a98bff;--thr:#ff7a6b;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 Inter,system-ui,sans-serif}
+header{padding:20px 16px 8px;max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;justify-content:space-between}
+h1{font-size:20px;margin:0;font-weight:700}
+h2{font-size:15px;margin:0 0 12px;font-weight:600}
+.sub{color:var(--muted);font-size:13px}
+main{max-width:1240px;margin:0 auto;padding:0 16px 40px;display:grid;gap:16px}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;min-width:0}
+.controls{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;flex-wrap:wrap}
+.seg button{border:0;background:transparent;color:var(--ink);padding:7px 12px;font:inherit;cursor:pointer;border-right:1px solid var(--line)}
+.seg button:last-child{border-right:0}
+.seg button.on{background:var(--accent);color:#fff}
+label.lbl{font-size:12px;color:var(--muted);display:block;margin-bottom:4px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:12px}
+.kpi .v{font-size:22px;font-weight:700;margin-top:2px}
+.kpi .d{font-size:12px;color:var(--muted);margin-top:4px}
+.pill{display:inline-block;padding:2px 8px;border-radius:99px;font-size:12px;font-weight:600}
+.pill.good{background:var(--good-bg);color:var(--good)}.pill.bad{background:var(--bad-bg);color:var(--bad)}.pill.warn{background:var(--warn-bg);color:var(--warn)}
+.chartbox{position:relative;height:340px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media (max-width:860px){.grid2{grid-template-columns:1fr}.chartbox{height:280px}}
+.tablewrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:13px}
+th,td{text-align:left;padding:7px 8px;border-bottom:1px solid var(--line);white-space:nowrap}
+th{font-weight:600;color:var(--muted);font-size:12px}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+tr.dim td{color:var(--muted)}
+a{color:var(--accent)}
+select,input[type=checkbox]{font:inherit}
+select{background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px 8px;max-width:100%}
+.hournav{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.btn{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:6px 10px;cursor:pointer;font:inherit}
+.runs{display:grid;gap:6px}
+.runrow{display:flex;gap:8px;align-items:center}
+.runrow .name{width:100px;font-size:12px;color:var(--muted);flex:none}
+.cells{display:flex;gap:2px;flex-wrap:wrap}
+.cell{width:12px;height:18px;border-radius:3px;background:var(--line)}
+.cell.ok{background:var(--good)}.cell.part{background:var(--warn)}.cell.ko{background:var(--bad)}
+.empty{color:var(--muted);padding:20px;text-align:center}
+.legend-note{font-size:12px;color:var(--muted);margin-top:8px}
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>Monitor prezzi iPhone ricondizionati</h1>
+    <div class="sub" id="updated">Caricamento…</div>
+  </div>
+  <div class="sub">Amazon.it · Back Market · TrenDevice · controllo ogni ora</div>
+</header>
+<main>
+  <section class="panel controls">
+    <div><label class="lbl">Modello</label><div class="seg" id="models"></div></div>
+    <div><label class="lbl">SIM</label><div class="seg" id="sims"></div></div>
+    <div><label class="lbl">Grado minimo</label><div class="seg" id="grades"></div></div>
+    <div><label class="lbl">Periodo</label><div class="seg" id="periods"></div></div>
+  </section>
+
+  <section class="kpis" id="kpis"></section>
+
+  <section class="panel">
+    <h2>Prezzo minimo ora per ora (solo offerte idonee)</h2>
+    <div class="chartbox"><canvas id="chart"></canvas></div>
+    <div class="legend-note">Clic su un punto per aprire il dettaglio di quell'ora. Linee tratteggiate: soglie "offerta interessante".</div>
+  </section>
+
+  <section class="panel">
+    <h2>Situazione ora per ora</h2>
+    <div class="hournav">
+      <button class="btn" id="prevH" aria-label="Ora precedente">‹</button>
+      <select id="hourSel"></select>
+      <button class="btn" id="nextH" aria-label="Ora successiva">›</button>
+      <label style="display:flex;gap:6px;align-items:center"><input type="checkbox" id="showAll"> mostra anche non idonee</label>
+      <button class="btn" id="csv">Scarica CSV dell'ora</button>
+    </div>
+    <div id="hourSummary" class="sub" style="margin-bottom:8px"></div>
+    <div class="tablewrap"><table id="hourTable"></table></div>
+  </section>
+
+  <section class="grid2">
+    <div class="panel">
+      <h2>Confronto siti: minimo attuale per modello</h2>
+      <div class="tablewrap"><table id="matrix"></table></div>
+    </div>
+    <div class="panel">
+      <h2>Media del minimo per ora del giorno</h2>
+      <div class="chartbox" style="height:260px"><canvas id="hod"></canvas></div>
+      <div class="legend-note" id="hodNote"></div>
+    </div>
+  </section>
+
+  <section class="grid2">
+    <div class="panel">
+      <h2>Offerte sotto soglia (ultimi 14 giorni)</h2>
+      <div class="tablewrap"><table id="hits"></table></div>
+    </div>
+    <div class="panel">
+      <h2>Stato dei controlli (ultime 48 ore)</h2>
+      <div class="runs" id="runs"></div>
+      <div class="legend-note">Verde: tutte le pagine lette · giallo: lettura parziale · rosso: sito bloccato o errore · grigio: nessun controllo.</div>
+    </div>
+  </section>
+</main>
+
+<script>
+const $ = s => document.querySelector(s);
+const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const eur = v => v == null ? '–' : v.toLocaleString('it-IT', {style:'currency', currency:'EUR'});
+const SITE_COLORS = {'Amazon':'--s2','Back Market':'--s3','TrenDevice':'--s4'};
+const RANK = {eccellente:3, premium:4};
+const SIMS = [['any','Qualsiasi'],['esim','solo eSIM'],['fisica','SIM fisica']];
+const GRADES = [['eccellente','Eccellente+'],['premium','Premium']];
+const PERIODS = [[24,'24 ore'],[168,'7 giorni'],[720,'30 giorni'],[0,'Tutto']];
+let META, SERIES, STATS, RUNS, HITS, DAYS = {};
+let st = {model:null, sim:'any', grade:'eccellente', period:168, hour:null, showAll:false};
+try { Object.assign(st, JSON.parse(localStorage.getItem('ipm-state') || '{}'), {hour:null}); } catch(e) {}
+let chart, hodChart;
+
+const fmtTs = (ts, withDay=true) => new Date(ts).toLocaleString('it-IT', {timeZone: META.timezone,
+  ...(withDay ? {weekday:'short', day:'2-digit', month:'2-digit'} : {}), hour:'2-digit', minute:'2-digit'});
+const simOk = (f, s) => f === 'any' || (f === 'esim' ? s === 'esim' : s !== 'esim');
+
+async function j(p){ const r = await fetch(p, {cache:'no-store'}); if(!r.ok) throw new Error(p); return r.json(); }
+
+async function init(){
+  [META, SERIES, STATS, RUNS, HITS] = await Promise.all(['meta','series','stats','runs','hits'].map(n => j(`data/${n}.json`)));
+  if (!st.model || !META.models.find(m => m.key === st.model)) st.model = META.models[0].key;
+  const last = META.hours[META.hours.length-1];
+  $('#updated').textContent = last ? `Ultimo controllo: ${fmtTs(last)} · ${META.hours.length} controlli in archivio` : 'Nessun dato';
+  seg('#models', META.models.map(m => [m.key, m.label.replace('iPhone ','')]), 'model');
+  seg('#sims', SIMS, 'sim'); seg('#grades', GRADES, 'grade'); seg('#periods', PERIODS, 'period');
+  $('#prevH').onclick = () => stepHour(-1); $('#nextH').onclick = () => stepHour(1);
+  $('#hourSel').onchange = e => { st.hour = e.target.value; renderHour(); };
+  $('#showAll').onchange = e => { st.showAll = e.target.checked; renderHour(); };
+  $('#csv').onclick = downloadCsv;
+  render();
+}
+
+function seg(sel, opts, key){
+  const el = $(sel); el.innerHTML = '';
+  opts.forEach(([v, l]) => { const b = document.createElement('button'); b.textContent = l; b.dataset.v = v;
+    b.onclick = () => { st[key] = typeof st[key] === 'number' ? +v : v; save(); render(); }; el.appendChild(b); });
+}
+function save(){ try { const {hour, ...rest} = st; localStorage.setItem('ipm-state', JSON.stringify(rest)); } catch(e) {} }
+function markSegs(){ [['#models','model'],['#sims','sim'],['#grades','grade'],['#periods','period']].forEach(([s,k]) =>
+  document.querySelectorAll(s+' button').forEach(b => b.classList.toggle('on', String(st[k]) === b.dataset.v))); }
+
+function thresholdsFor(model, sim, grade){
+  return META.thresholds.filter(t => t.model === model && RANK[t.grade] >= RANK[grade]
+    && (sim === 'any' || t.sim === 'any' || t.sim === sim));
+}
+
+function filtered(){
+  const g = RANK[st.grade];
+  const now = Date.now(), lim = st.period ? now - st.period*3600e3 : 0;
+  return SERIES.filter(r => r[1] === st.model && r[4] >= g && simOk(st.sim, r[3]) && Date.parse(r[0]) >= lim);
+}
+
+function render(){
+  markSegs();
+  const rows = filtered();
+  const bySite = {}, best = {};
+  rows.forEach(r => { const k = r[0];
+    (bySite[r[2]] ||= {}); if (!bySite[r[2]][k] || r[5] < bySite[r[2]][k][5]) bySite[r[2]][k] = r;
+    if (!best[k] || r[5] < best[k][5]) best[k] = r; });
+  renderKpis(best);
+  renderChart(bySite, best);
+  renderHourSelect();
+  renderMatrix(); renderHod(); renderHits(); renderRuns();
+}
+
+function renderKpis(best){
+  const keys = Object.keys(best).sort(); const el = $('#kpis');
+  if (!keys.length){ el.innerHTML = `<div class="kpi empty">Nessuna offerta idonea per questo filtro nel periodo.</div>`; return; }
+  const cur = best[keys[keys.length-1]], prices = keys.map(k => best[k][5]);
+  const dayAgo = keys.filter(k => Math.abs(Date.parse(cur[0]) - Date.parse(k) - 24*3600e3) <= 3600e3).map(k => best[k][5])[0];
+  const ths = thresholdsFor(st.model, st.sim, st.grade);
+  const th = ths.length ? Math.max(...ths.map(t => t.price)) : null;
+  const gap = th != null ? cur[5] - th : null;
+  const under = th != null ? prices.filter(p => p <= th).length : null;
+  const ch = dayAgo != null ? cur[5] - dayAgo : null;
+  const pill = (v, invert) => v == null ? '' : `<span class="pill ${v <= 0 ? 'good' : 'bad'}">${v > 0 ? '+' : ''}${eur(v)}</span>`;
+  el.innerHTML = `
+    <div class="kpi"><div class="sub">Miglior prezzo ora</div><div class="v">${eur(cur[5])}</div>
+      <div class="d">${cur[2]} · ${META.sim_labels[cur[3]]} · ${cur[6] || 'colore n.d.'}<br>${cur[7] || ''}</div></div>
+    <div class="kpi"><div class="sub">Distanza dalla soglia${th != null ? ' (' + eur(th) + ')' : ''}</div>
+      <div class="v">${gap == null ? '–' : (gap <= 0 ? 'Sotto soglia' : eur(gap))}</div>
+      <div class="d">${ths.map(t => `${t.sim === 'any' ? 'qualsiasi SIM' : META.sim_labels[t.sim === 'esim' ? 'esim' : 'fisica']} ${t.grade} ${t.op} ${t.price} €`).join('<br>') || 'nessuna soglia per questo filtro'}</div></div>
+    <div class="kpi"><div class="sub">Variazione 24 ore</div><div class="v">${ch == null ? '–' : pill(ch)}</div>
+      <div class="d">${dayAgo != null ? 'ieri alla stessa ora ' + eur(dayAgo) : 'servono almeno 24 ore di dati'}</div></div>
+    <div class="kpi"><div class="sub">Minimo / media nel periodo</div><div class="v">${eur(Math.min(...prices))}</div>
+      <div class="d">media ${eur(prices.reduce((a,b)=>a+b,0)/prices.length)} · ${prices.length} controlli</div></div>
+    <div class="kpi"><div class="sub">Ore sotto soglia nel periodo</div><div class="v">${under == null ? '–' : under}</div>
+      <div class="d">${under ? 'ci sono state occasioni' : 'nessuna finora'}</div></div>`;
+}
+
+function renderChart(bySite, best){
+  const ths = thresholdsFor(st.model, st.sim, st.grade);
+  const ds = Object.entries(bySite).map(([site, pts]) => ({label: site, data: Object.values(pts).sort((a,b)=>a[0]<b[0]?-1:1).map(r => ({x: Date.parse(r[0]), y: r[5], r})),
+    borderColor: css(SITE_COLORS[site] || '--s1'), backgroundColor: css(SITE_COLORS[site] || '--s1'), tension:.2, pointRadius:3, borderWidth:2, spanGaps:true}));
+  const xs = Object.keys(best).map(Date.parse);
+  ths.forEach(t => ds.push({label: `Soglia ${t.op} ${t.price} € (${t.sim === 'any' ? 'qualsiasi' : t.sim}, ${t.grade})`, data: xs.length ? [{x: Math.min(...xs), y: t.price}, {x: Math.max(...xs), y: t.price}] : [],
+    borderColor: css('--thr'), borderDash:[6,4], pointRadius:0, borderWidth:1.5}));
+  const grid = css('--line'), ink = css('--muted');
+  if (chart) chart.destroy();
+  chart = new Chart($('#chart'), {type:'line', data:{datasets: ds}, options:{responsive:true, maintainAspectRatio:false, parsing:false,
+    interaction:{mode:'nearest', intersect:false},
+    scales:{x:{type:'linear', grid:{color:grid}, ticks:{color:ink, maxTicksLimit:8, callback: v => fmtTs(v)}},
+            y:{grid:{color:grid}, ticks:{color:ink, callback: v => v + ' €'}}},
+    plugins:{legend:{labels:{color:ink, boxWidth:12}}, tooltip:{callbacks:{
+      title: it => fmtTs(it[0].parsed.x),
+      label: it => { const r = it.raw.r; return r ? `${it.dataset.label}: ${eur(r[5])} · ${META.sim_labels[r[3]]} · ${r[6] || ''} ${r[7] ? '· ' + r[7] : ''}` : it.dataset.label; }}}},
+    onClick: (e, els) => { const el = els.find(x => chart.data.datasets[x.datasetIndex].data[x.index].r); if (!el) return;
+      st.hour = chart.data.datasets[el.datasetIndex].data[el.index].r[0]; $('#hourSel').value = st.hour; renderHour();
+      document.querySelector('#hourSel').scrollIntoView({behavior:'smooth', block:'center'}); }}});
+}
+
+function renderHourSelect(){
+  const sel = $('#hourSel'); const hours = [...META.hours].reverse();
+  sel.innerHTML = hours.map(h => `<option value="${h}">${fmtTs(h)}</option>`).join('');
+  if (!st.hour || !hours.includes(st.hour)) st.hour = hours[0];
+  sel.value = st.hour; $('#showAll').checked = st.showAll; renderHour();
+}
+function stepHour(d){ const h = META.hours, i = h.indexOf(st.hour) + d; if (i >= 0 && i < h.length){ st.hour = h[i]; $('#hourSel').value = st.hour; renderHour(); } }
+
+async function dayRows(day){
+  if (!DAYS[day]) { try { const d = await j(`data/days/${day}.json`); DAYS[day] = d.rows.map(r => Object.fromEntries(d.cols.map((c,i) => [c, r[i]]))); } catch(e) { DAYS[day] = []; } }
+  return DAYS[day];
+}
+let hourRowsCache = [];
+async function renderHour(){
+  const t = $('#hourTable'); if (!st.hour){ t.innerHTML = ''; return; }
+  const all = (await dayRows(st.hour.slice(0,10))).filter(r => r.ts === st.hour && r.model === st.model);
+  const g = RANK[st.grade];
+  let rows = all.filter(r => simOk(st.sim, r.sim) && (st.showAll || (r.eligible === '1' && +r.grade_rank >= g)));
+  rows.sort((a,b) => +a.price - +b.price); hourRowsCache = rows;
+  const idx = META.hours.indexOf(st.hour), prevH = idx > 0 ? META.hours[idx-1] : null;
+  let prevBest = {};
+  if (prevH){ (await dayRows(prevH.slice(0,10))).filter(r => r.ts === prevH && r.model === st.model && r.eligible === '1' && +r.grade_rank >= g && simOk(st.sim, r.sim))
+    .forEach(r => { if (!prevBest[r.site] || +r.price < prevBest[r.site]) prevBest[r.site] = +r.price; }); }
+  const curBest = {}; rows.filter(r => r.eligible === '1').forEach(r => { if (!curBest[r.site] || +r.price < curBest[r.site]) curBest[r.site] = +r.price; });
+  $('#hourSummary').innerHTML = Object.keys(curBest).length ? 'Minimo per sito: ' + Object.entries(curBest).map(([s,p]) => {
+    const d = prevBest[s] != null ? p - prevBest[s] : null;
+    return `<b>${s}</b> ${eur(p)}${d ? ` <span class="pill ${d < 0 ? 'good' : 'bad'}">${d > 0 ? '+' : ''}${eur(d)} vs controllo prec.</span>` : ''}`; }).join(' · ') : 'Nessuna offerta idonea in quest\'ora per il filtro scelto.';
+  const ths = thresholdsFor(st.model, 'any', 'eccellente');
+  const isHit = r => r.eligible === '1' && ths.some(t => simOk(t.sim, r.sim) && +r.grade_rank >= RANK[t.grade] && (t.op === '<' ? +r.price < t.price : +r.price <= t.price));
+  t.innerHTML = `<thead><tr><th class="num">Prezzo</th><th>Sito</th><th>Grado</th><th>SIM</th><th>Colore</th><th>Venditore</th><th class="num">Positivi</th><th>Fonte prezzo</th><th>Note</th><th></th></tr></thead><tbody>` +
+    (rows.length ? rows.map(r => `<tr class="${r.eligible === '1' ? '' : 'dim'}"><td class="num"><b>${eur(+r.price)}</b> ${isHit(r) ? '<span class="pill good">sotto soglia</span>' : ''}</td><td>${r.site}</td><td>${r.grade}</td><td>${META.sim_labels[r.sim] || r.sim}</td>
+      <td>${r.color || '–'}</td><td>${r.seller || '–'}</td><td class="num">${r.seller_positive ? r.seller_positive + '%' : '–'}</td>
+      <td>${r.price_source === 'selettore' ? '<span class="pill warn">selettore</span>' : r.price_source}</td><td>${r.notes || ''}</td><td><a href="${r.url}" target="_blank" rel="noopener">apri</a></td></tr>`).join('')
+      : `<tr><td colspan="10" class="empty">Nessuna offerta</td></tr>`) + '</tbody>';
+}
+
+function downloadCsv(){
+  const cols = ['ts','site','model','sim','color','grade','price','seller','seller_positive','price_source','eligible','notes','url'];
+  const esc = v => `"${String(v ?? '').replace(/"/g,'""')}"`;
+  const csv = [cols.join(';'), ...hourRowsCache.map(r => cols.map(c => esc(r[c])).join(';'))].join('\n');
+  const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['﻿' + csv], {type:'text/csv'}));
+  a.download = `offerte_${st.model}_${st.hour.slice(0,13)}.csv`; a.click();
+}
+
+function renderMatrix(){
+  const last = META.hours[META.hours.length-1]; if (!last){ $('#matrix').innerHTML=''; return; }
+  const g = RANK[st.grade]; const sites = META.sites;
+  const rows = SERIES.filter(r => r[0] === last && r[4] >= g && simOk(st.sim, r[3]));
+  const cell = {}; rows.forEach(r => { const k = r[1] + '|' + r[2]; if (!cell[k] || r[5] < cell[k][5]) cell[k] = r; });
+  $('#matrix').innerHTML = `<thead><tr><th>Modello</th>${sites.map(s => `<th class="num">${s}</th>`).join('')}</tr></thead><tbody>` +
+    META.models.map(m => { const vals = sites.map(s => cell[m.key + '|' + s]); const min = Math.min(...vals.filter(Boolean).map(v => v[5]));
+      return `<tr><td>${m.label.replace('iPhone ','')}</td>${vals.map(v => `<td class="num">${v ? (v[5] === min ? `<b>${eur(v[5])}</b>` : eur(v[5])) : '–'}</td>`).join('')}</tr>`; }).join('') +
+    `</tbody>`;
+}
+
+function renderHod(){
+  const rows = filtered(); const best = {};
+  rows.forEach(r => { if (!best[r[0]] || r[5] < best[r[0]]) best[r[0]] = r[5]; });
+  const by = {}; Object.entries(best).forEach(([ts, p]) => { const h = +new Date(ts).toLocaleString('en-GB', {timeZone: META.timezone, hour:'2-digit', hour12:false}) % 24; (by[h] ||= []).push(p); });
+  const hs = Object.keys(by).map(Number).sort((a,b)=>a-b); const avg = hs.map(h => by[h].reduce((a,b)=>a+b,0)/by[h].length);
+  if (hodChart) hodChart.destroy();
+  hodChart = new Chart($('#hod'), {type:'bar', data:{labels: hs.map(h => h + ':00'), datasets:[{label:'media del minimo', data: avg, backgroundColor: css('--s1')}]},
+    options:{responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}, tooltip:{callbacks:{label: it => `${eur(it.raw)} su ${by[hs[it.dataIndex]].length} controlli`}}},
+      scales:{x:{grid:{display:false}, ticks:{color:css('--muted')}}, y:{grid:{color:css('--line')}, ticks:{color:css('--muted'), callback: v => v + ' €'}, beginAtZero:false}}}});
+  const enough = hs.length > 3 && Object.values(by).every(v => v.length >= 2);
+  $('#hodNote').textContent = enough ? `Ora mediamente più conveniente: ${hs[avg.indexOf(Math.min(...avg))]}:00 (ora italiana).` : 'Servono alcuni giorni di dati perché questo grafico sia significativo.';
+}
+
+function renderHits(){
+  const rows = HITS.filter(h => h.model === st.model).slice(0, 40);
+  $('#hits').innerHTML = rows.length ? `<thead><tr><th>Quando</th><th class="num">Prezzo</th><th>Grado</th><th>SIM</th><th>Colore</th><th>Venditore</th><th>Sito</th></tr></thead><tbody>` +
+    rows.map(h => `<tr><td>${fmtTs(h.ts)}</td><td class="num"><b>${eur(+h.price)}</b></td><td>${h.grade}</td><td>${META.sim_labels[h.sim]}</td><td>${h.color || '–'}</td><td>${h.seller || '–'}</td><td><a href="${h.url}" target="_blank" rel="noopener">${h.site}</a></td></tr>`).join('') + '</tbody>'
+    : `<tbody><tr><td class="empty">Nessuna offerta sotto soglia per questo modello negli ultimi 14 giorni.</td></tr></tbody>`;
+}
+
+function renderRuns(){
+  const hours = META.hours.slice(-48); const sites = [...new Set(RUNS.map(r => r.site))];
+  $('#runs').innerHTML = sites.map(s => `<div class="runrow"><div class="name">${s}</div><div class="cells">` + hours.map(h => {
+    const r = RUNS.find(x => x.ts === h && x.site === s);
+    const cls = !r ? '' : r.ok === r.tot ? 'ok' : r.ok > 0 ? 'part' : 'ko';
+    const tip = r ? `${fmtTs(h)}: ${r.ok}/${r.tot} ok${r.errors.length ? ' — ' + r.errors.slice(0,3).join('; ') : ''}` : `${fmtTs(h)}: nessun controllo`;
+    return `<div class="cell ${cls}" title="${tip.replace(/"/g,'&quot;')}"></div>`; }).join('') + `</div></div>`).join('') || '<div class="empty">Nessun controllo registrato.</div>';
+}
+
+init().catch(e => { $('#updated').textContent = 'Errore nel caricamento dei dati: ' + e.message; });
+</script>
+</body>
+</html>
