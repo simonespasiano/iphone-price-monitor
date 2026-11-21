@@ -41,7 +41,16 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          DEBUG_SCREENSHOTS: "1"
         run: python -m monitor.run --sites "${{ github.event.inputs.sites || 'amazon,backmarket,trendevice' }}"
+      - name: Screenshot diagnostica
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: debug-${{ github.run_id }}
+          path: debug/
+          if-no-files-found: ignore
+          retention-days: 3
       - name: Report
         run: python -m monitor.analyze >> "$GITHUB_STEP_SUMMARY" || true
       - name: Salva dati
