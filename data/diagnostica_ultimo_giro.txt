@@ -1,0 +1,95 @@
+DEBUG amazon B0CVJVJNQS (0 offerte)
+titolo: Apple iPhone 15 Pro 256 GB - Titan Schwarz (Ricondizionato) : Amazon.it: Elettronica
+url: https://www.amazon.it/dp/B0CVJVJNQS?aod=1&th=1
+testo: Passa a Contenuti principali Informazioni sull’articolo Opzioni di acquisto Recensioni Tasti di scelta rapida Cerca alt + / Carrello maiusc + alt + C Home page maiusc + alt + H Ordini maiusc + alt + O Aggiungi al carrello maiusc + alt + K Riepilogo del prodotto maiusc + alt + D Mostra/nascondi scorciatoie maiusc + alt + Z Per spostarti tra gli elementi, usa le frecce su o giù della tastiera. .it Il tuo indirizzo di consegna: 20121‌ Elettronica Tutte le categorie Settimana del Black Friday Alexa Skill Alimentari e cura della casa Amazon Fresh Amazon Global Store Amazon Haul Amazon Seconda mano App e Giochi Audiolibri Audible Auto e Moto - Parti e Accessori Bellezza Buoni Regalo Cancelleria e 
+
+DEBUG backmarket 16pro-128 Eccellente eSIM click=False
+titolo: 
+url: https://www.backmarket.it/it-it/p/iphone-16-pro
+testo: Sorry, this page is not available.
+
+DEBUG backmarket 16pro-128 Eccellente SIM fisica + eSIM click=False
+titolo: 
+url: https://www.backmarket.it/it-it/p/iphone-16-pro
+testo: Sorry, this page is not available.
+
+DEBUG backmarket 16pro-128 Premium eSIM click=False
+titolo: Ci siamo quasi…
+url: https://www.backmarket.it/testchallengepage?next=https%3A%2F%2Fwww.backmarket.it%2Fit-it%2Fp%2Fiphone-16-pro
+testo: www.backmarket.it Esecuzione della verifica di sicurezza Questo sito web utilizza un servizio di sicurezza per la protezione dai bot dannosi. Questa è la pagina che viene visualizzata durante la verifica del sito web. Ray ID: a5e2cb14d81bc8b8 Prestazioni e sicurezza di Cloudflare Privacy
+
+DEBUG backmarket 16pro-128 Premium SIM fisica + eSIM click=False
+titolo: Ci siamo quasi…
+url: https://www.backmarket.it/testchallengepage?next=https%3A%2F%2Fwww.backmarket.it%2Fit-it%2Fp%2Fiphone-16-pro
+testo: www.backmarket.it Esecuzione della verifica di sicurezza Questo sito web utilizza un servizio di sicurezza per la protezione dai bot dannosi. Questa è la pagina che viene visualizzata durante la verifica del sito web. Ray ID: a5e2cb25e9dbc8b8 Prestazioni e sicurezza di Cloudflare Privacy
+
+DEBUG backmarket 16pro-256 Eccellente eSIM click=False
+titolo: Ci siamo quasi…
+url: https://www.backmarket.it/testchallengepage?next=https%3A%2F%2Fwww.backmarket.it%2Fit-it%2Fp%2Fiphone-16-pro
+testo: www.backmarket.it Esecuzione della verifica di sicurezza Questo sito web utilizza un servizio di sicurezza per la protezione dai bot dannosi. Questa è la pagina che viene visualizzata durante la verifica del sito web. Ray ID: a5e2cb3a8c79c8b8 Prestazioni e sicurezza di Cloudflare Privacy
+
+DEBUG backmarket 16pro-256 Eccellente SIM fisica + eSIM click=False
+titolo: Ci siamo quasi…
+url: https://www.backmarket.it/testchallengepage?next=https%3A%2F%2Fwww.backmarket.it%2Fit-it%2Fp%2Fiphone-16-pro
+testo: www.backmarket.it Esecuzione della verifica di sicurezza Questo sito web utilizza un servizio di sicurezza per la protezione dai bot dannosi. Questa è la pagina che viene visualizzata durante la verifica del sito web. Ray ID: a5e2cb4e4e38c8b8 Prestazioni e sicurezza di Cloudflare Privacy
+
+DEBUG backmarket 16pro-256 Premium eSIM click=False
+titolo: Ci siamo quasi…
+url: https://www.backmarket.it/testchallengepage?next=https%3A%2F%2Fwww.backmarket.it%2Fit-it%2Fp%2Fiphone-16-pro
+testo: www.backmarket.it Esecuzione della verifica di sicurezza Questo sito web utilizza un servizio di sicurezza per la protezione dai bot dannosi. Questa è la pagina che viene visualizzata durante la verifica del sito web. Ray ID: a5e2cb610877c8b8 Prestazioni e sicurezza di Cloudflare Privacy
+
+DEBUG backmarket 16pro-256 Premium SIM fisica + eSIM click=False
+titolo: Ci siamo quasi…
+url: https://www.backmarket.it/testchallengepage?next=https%3A%2F%2Fwww.backmarket.it%2Fit-it%2Fp%2Fiphone-16-pro
+testo: www.backmarket.it Esecuzione della verifica di sicurezza Questo sito web utilizza un servizio di sicurezza per la protezione dai bot dannosi. Questa è la pagina che viene visualizzata durante la verifica del sito web. Ray ID: a5e2cb720a8ec8b8 Prestazioni e sicurezza di Cloudflare Privacy
+
+DEBUG backmarket 15pro-128 Eccellente eSIM click=False
+titolo: Ci siamo quasi…
+url: https://www.backmarket.it/testchallengepage?next=https%3A%2F%2Fwww.backmarket.it%2Fit-it%2Fp%2Fiphone-15-pro
+testo: www.backmarket.it Esecuzione della verifica di sicurezza Questo sito web utilizza un servizio di sicurezza per la protezione dai bot dannosi. Questa è la pagina che viene visualizzata durante la verifica del sito web. Ray ID: a5e2cb84fcdbc8b8 Prestazioni e sicurezza di Cloudflare Privacy
+
+DEBUG backmarket 15pro-128 Eccellente SIM fisica + eSIM click=False
+titolo: Ci siamo quasi…
+url: https://www.backmarket.it/testchallengepage?next=https%3A%2F%2Fwww.backmarket.it%2Fit-it%2Fp%2Fiphone-15-pro
+testo: www.backmarket.it Esecuzione della verifica di sicurezza Questo sito web utilizza un servizio di sicurezza per la protezione dai bot dannosi. Questa è la pagina che viene visualizzata durante la verifica del sito web. Ray ID: a5e2cb97beb1c8b8 Prestazioni e sicurezza di Cloudflare Privacy
+
+DEBUG backmarket 15pro-128 Premium eSIM click=False
+titolo: Ci siamo quasi…
+url: https://www.backmarket.it/testchallengepage?next=https%3A%2F%2Fwww.backmarket.it%2Fit-it%2Fp%2Fiphone-15-pro
+testo: www.backmarket.it Esecuzione della verifica di sicurezza Questo sito web utilizza un servizio di sicurezza per la protezione dai bot dannosi. Questa è la pagina che viene visualizzata durante la verifica del sito web. Ray ID: a5e2cbaaa8b3c8b8 Prestazioni e sicurezza di Cloudflare Privacy
+
+DEBUG backmarket 15pro-128 Premium SIM fisica + eSIM click=False
+titolo: Ci siamo quasi…
+url: https://www.backmarket.it/testchallengepage?next=https%3A%2F%2Fwww.backmarket.it%2Fit-it%2Fp%2Fiphone-15-pro
+testo: www.backmarket.it Esecuzione della verifica di sicurezza Questo sito web utilizza un servizio di sicurezza per la protezione dai bot dannosi. Questa è la pagina che viene visualizzata durante la verifica del sito web. Ray ID: a5e2cbbe1b38c8b8 Prestazioni e sicurezza di Cloudflare Privacy
+
+DEBUG backmarket 15pro-256 Eccellente eSIM click=False
+titolo: Ci siamo quasi…
+url: https://www.backmarket.it/testchallengepage?next=https%3A%2F%2Fwww.backmarket.it%2Fit-it%2Fp%2Fiphone-15-pro
+testo: www.backmarket.it Esecuzione della verifica di sicurezza Questo sito web utilizza un servizio di sicurezza per la protezione dai bot dannosi. Questa è la pagina che viene visualizzata durante la verifica del sito web. Ray ID: a5e2cbd03e32c8b8 Prestazioni e sicurezza di Cloudflare Privacy
+
+DEBUG backmarket 15pro-256 Eccellente SIM fisica + eSIM click=False
+titolo: Ci siamo quasi…
+url: https://www.backmarket.it/testchallengepage?next=https%3A%2F%2Fwww.backmarket.it%2Fit-it%2Fp%2Fiphone-15-pro
+testo: www.backmarket.it Esecuzione della verifica di sicurezza Questo sito web utilizza un servizio di sicurezza per la protezione dai bot dannosi. Questa è la pagina che viene visualizzata durante la verifica del sito web. Ray ID: a5e2cbe28884c8b8 Prestazioni e sicurezza di Cloudflare Privacy
+
+DEBUG backmarket 15pro-256 Premium eSIM click=False
+titolo: Ci siamo quasi…
+url: https://www.backmarket.it/testchallengepage?next=https%3A%2F%2Fwww.backmarket.it%2Fit-it%2Fp%2Fiphone-15-pro
+testo: www.backmarket.it Esecuzione della verifica di sicurezza Questo sito web utilizza un servizio di sicurezza per la protezione dai bot dannosi. Questa è la pagina che viene visualizzata durante la verifica del sito web. Ray ID: a5e2cbf47b07c8b8 Prestazioni e sicurezza di Cloudflare Privacy
+
+DEBUG backmarket 15pro-256 Premium SIM fisica + eSIM click=False
+titolo: Ci siamo quasi…
+url: https://www.backmarket.it/testchallengepage?next=https%3A%2F%2Fwww.backmarket.it%2Fit-it%2Fp%2Fiphone-15-pro
+testo: www.backmarket.it Esecuzione della verifica di sicurezza Questo sito web utilizza un servizio di sicurezza per la protezione dai bot dannosi. Questa è la pagina che viene visualizzata durante la verifica del sito web. Ray ID: a5e2cc058c93c8b8 Prestazioni e sicurezza di Cloudflare Privacy
+
+DEBUG trendevice iPhone 16 Pro
+titolo: iPhone 16 Pro Ricondizionato: Qualità e Risparmio TrenDevice
+url: https://www.trendevice.com/prodotti/iphone/serie-16/iphone-16-pro/
+testo: homepage Tutti i prodotti iPhone 17 iPhone 16 Pro iPhone 15 Pro iPhone 15 VENDI IL TUO USATO Contatti Cerca Vendi Aiuto Accedi carrello Carrello Black Weeks TrenDevice. Scopri le offerte >> iPhone iPhone serie 16 iPhone 16 Pro iPhone 16 Pro Ricondizionati iPhone 16 Pro Ricondizionato TrenDevice: risparmia senza rinunciare alla qualità. Garanzia di 12 mesi per un acquisto sicuro e conveniente! Chip A18 Pro, display ProMotion 6,3", tripla fotocamera con teleobiettivo 3x e Apple Intelligence: alternativa al 17 Pro con ottimo rapporto qualità-prezzo. Altri modelli della serie PROMO iPhone 16e da €549,90 PROMO iPhone 16 da €589,90 PROMO iPhone 16 Plus da €639,90 PROMO iPhone 16 Pro Max da €749,90 Tutti i prodotti Filtri 29 Promo Risparmia 50€ iPhone 16 Pro 128 GB | Colore a sorpresa | Sim Card (include slot sim) | C Smart A partire da €769,90 €719,90 Preordina TrenDevice Club Guadagna con i tuoi acquisti e con quelli degli amici Promo Risparmia 50€ iPhone 16 Pro 128 GB | Titanio naturale | Sim Card (include slot sim) | C Smart A partire da €769,90 €719,90 Preordina Promo Risparmia 50€ iPhone 16 Pro 128 GB | Colore a sorpresa | Sim Card (include slot sim) | B Buono A partire da €779,90 €729,90 Preordina Promo Risparmia 50€ iPhone 16 Pro 128 GB | Titanio naturale | Sim Card (include slot sim) | B Buono A partire da €779,90 €729,90 Preordina Promo Risparmia 50€ iPhone 16 Pro 128 GB | Colore a sorpresa | Sim Card (include slot sim) | A Eccellente A partire da €809,90 €759,90 Promo Ris
+
+DEBUG trendevice iPhone 15 Pro
+titolo: iPhone 15 Pro Ricondizionato: Qualità e Risparmio TrenDevice
+url: https://www.trendevice.com/prodotti/iphone/serie-15/iphone-15-pro/
+testo: homepage Tutti i prodotti iPhone 17 iPhone 16 Pro iPhone 15 Pro iPhone 15 VENDI IL TUO USATO Contatti Cerca Vendi Aiuto Accedi carrello Carrello Black Weeks TrenDevice. Scopri le offerte >> iPhone iPhone Serie 15 iPhone 15 Pro iPhone 15 Pro Ricondizionati iPhone 15 Pro Ricondizionato TrenDevice: risparmia senza rinunciare alla qualità. Garanzia di 12 mesi per un acquisto sicuro e conveniente! Realizzato in Titanio, connettore USB-C, Tasto Azione, processore A17 Pro e tripla fotocamera con teleobiettivo 3x. Altri modelli della serie PROMO iPhone 15 da €459,90 PROMO iPhone 15 Plus da €479,90 PROMO iPhone 15 Pro Max da €599,00 Tutti i prodotti Filtri 24 Promo Risparmia 50€ iPhone 15 Pro 128 GB | Colore a sorpresa | C Smart | Sim Card (include slot sim) A partire da €589,00 €539,00 Preordina TrenDevice Club Guadagna con i tuoi acquisti e con quelli degli amici Promo Risparmia 50€ iPhone 15 Pro 128 GB | Colore a sorpresa | B Buono | Sim Card (include slot sim) A partire da €629,00 €579,00 Preordina Promo Risparmia 50€ iPhone 15 Pro 128 GB | Titanio naturale | B Buono | Sim Card (include slot sim) A partire da €629,00 €579,00 Preordina Promo Risparmia 50€ iPhone 15 Pro 256 GB | Colore a sorpresa | C Smart | Sim Card (include slot sim) A partire da €649,00 €599,00 Preordina Promo Risparmia 50€ iPhone 15 Pro 128 GB | Colore a sorpresa | A Eccellente | Sim Card (include slot sim) A partire da €669,00 €619,00 Promo Risparmia 50€ iPhone 15 Pro 128 GB | Titanio blu | A Eccellente | Sim C
+
