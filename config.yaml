@@ -41,6 +41,7 @@ thresholds:
 sources:
   amazon:
     enabled: true
+    postcode: "20121"          # CAP di consegna (Milano): Amazon mostra le offerte in base all'indirizzo
     # Gli ASIN noti vengono sempre controllati (elenco "tutte le offerte", ?aod=1).
     # I modelli venduti su Amazon.it con questi ASIN hanno SIM fisica (+ eSIM).
     asins:
