@@ -1,0 +1,71 @@
+name: Monitor prezzi (ogni ora)
+
+on:
+  schedule:
+    - cron: "7 * * * *"      # ogni ora al minuto 7 (UTC); GitHub può ritardare di qualche minuto
+  workflow_dispatch:
+    inputs:
+      sites:
+        description: "Siti da controllare (separati da virgola)"
+        default: "amazon,backmarket,trendevice"
+
+permissions:
+  contents: write
+  issues: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: monitor
+  cancel-in-progress: false
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: Dipendenze
+        run: |
+          pip install -r requirements.txt
+          python -m playwright install --with-deps chromium
+      - name: Etichetta "offerta"
+        env: { GH_TOKEN: "${{ github.token }}" }
+        run: gh label create offerta --color 1a8a4a --description "Offerta sotto soglia" 2>/dev/null || true
+      - name: Controllo siti
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: python -m monitor.run --sites "${{ github.event.inputs.sites || 'amazon,backmarket,trendevice' }}"
+      - name: Report
+        run: python -m monitor.analyze >> "$GITHUB_STEP_SUMMARY" || true
+      - name: Salva dati
+        run: |
+          git config user.name "price-monitor-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data docs/data
+          git diff --cached --quiet && exit 0
+          git commit -m "dati $(date -u +%Y-%m-%dT%H:00Z)"
+          for i in 1 2 3; do git pull --rebase -X ours && git push && break; sleep 5; done
+
+  # I push fatti con GITHUB_TOKEN non avviano altri workflow: la dashboard si pubblica qui.
+  pages:
+    needs: run
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+        with: { ref: main }
+      - uses: actions/configure-pages@v5
+        with: { enablement: true }
+      - uses: actions/upload-pages-artifact@v3
+        with: { path: docs }
+      - id: deployment
+        uses: actions/deploy-pages@v4
