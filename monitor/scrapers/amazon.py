@@ -55,20 +55,34 @@ def reject_cookies(page):
         pass
 
 
-def set_location(page, postcode: str) -> str:
-    """Imposta un CAP italiano: senza, dai server esteri Amazon mostra solo le offerte che spediscono all'estero."""
-    try:
-        page.goto("https://www.amazon.it/", wait_until="domcontentloaded", timeout=45000)
-        reject_cookies(page)
-        page.click("#nav-global-location-popover-link", timeout=8000)
-        page.fill("#GLUXZipUpdateInput", postcode, timeout=8000)
-        page.click("#GLUXZipUpdate input, #GLUXZipUpdate", timeout=5000)
-        page.wait_for_timeout(2500)
-        page.reload(wait_until="domcontentloaded")
-        loc = page.locator("#glow-ingress-line2").inner_text(timeout=5000)
-        return loc.strip()
-    except Exception as e:  # noqa: BLE001
-        return f"CAP non impostato: {str(e)[:120]}"
+def set_location(page, postcode: str, attempts: int = 3) -> str:
+    """Imposta un CAP italiano: senza, dai server esteri Amazon mostra solo le offerte che spediscono all'estero.
+    Riprova qualche volta perché il popup dell'indirizzo non sempre compare al primo caricamento."""
+    last = ""
+    for i in range(attempts):
+        try:
+            page.goto("https://www.amazon.it/", wait_until="domcontentloaded", timeout=45000)
+            reject_cookies(page)
+            page.wait_for_selector("#nav-global-location-popover-link", timeout=15000)
+            page.click("#nav-global-location-popover-link", timeout=8000)
+            page.wait_for_selector("#GLUXZipUpdateInput", state="visible", timeout=10000)
+            page.fill("#GLUXZipUpdateInput", postcode)
+            page.click("#GLUXZipUpdate input, #GLUXZipUpdate", timeout=5000)
+            page.wait_for_timeout(3000)
+            for sel in ["#GLUXConfirmClose", "button[name='glowDoneButton']", ".a-popover-footer #GLUXConfirmClose"]:
+                if page.locator(sel).count():
+                    try:
+                        page.locator(sel).first.click(timeout=2000)
+                    except Exception:
+                        pass
+            page.reload(wait_until="domcontentloaded")
+            last = page.locator("#glow-ingress-line2").inner_text(timeout=8000).strip()
+            if postcode in last:
+                return last
+        except Exception as e:  # noqa: BLE001
+            last = f"CAP non impostato: {str(e)[:120]}"
+        page.wait_for_timeout(3000 * (i + 1))
+    return last or "CAP non impostato"
 
 
 def parse_aod(raw: list[dict], model: str, storage: int, color: str, asin: str) -> list[Offer]:
@@ -116,7 +130,7 @@ def scrape(page, cfg: dict) -> tuple[list[Offer], list[dict]]:
     models = {m["key"]: m for m in cfg["models"]}
     loc = set_location(page, str(src.get("postcode", "20121")))
     print(f"[amazon] consegna: {loc}", flush=True)
-    if "non impostato" in loc:
+    if str(src.get("postcode", "20121")) not in loc:
         dump(page, "amazon home (CAP)", 1200)
     runs.append(dict(site=SITE, target="cap", status="ok" if src.get("postcode", "20121") in loc else "avviso", n=0, error=loc[:150], secs=0))
 
