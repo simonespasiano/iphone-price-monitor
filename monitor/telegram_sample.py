@@ -34,8 +34,7 @@ def main(argv=None) -> int:
     argv = sys.argv[1:] if argv is None else argv
     cfg = load_config()
     offers, runs, ts = last_run()
-    text = "🧪 ESEMPIO (dati dell'ultima verifica salvata, " + (ts or "nessuna") + ")\n\n" \
-        + telegram.build_report(offers, runs, [], cfg)
+    text = "🧪 ESEMPIO con i dati dell'ultima verifica salvata\n\n" + telegram.build_report(offers, runs, [], cfg)
     if "--print" in argv:
         print(text)
         return 0
