@@ -10,6 +10,7 @@ from datetime import datetime, timezone
 
 from .alerts import load_state, save_state, select_new_hits, send
 from .build_site import build
+from .debug import reset as reset_debug
 from .config import load_config
 from .rules import is_eligible
 from .storage import save
@@ -33,6 +34,7 @@ def main(argv=None) -> int:
     now = datetime.now(timezone.utc).replace(minute=0, second=0, microsecond=0)
     ts = now.strftime("%Y-%m-%dT%H:%M:%SZ")
     offers, runs = [], []
+    reset_debug()
     with sync_playwright() as p:
         browser = p.chromium.launch(headless=not args.headed, args=["--disable-blink-features=AutomationControlled"])
         for name in args.sites.split(","):

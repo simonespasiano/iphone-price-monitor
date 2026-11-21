@@ -4,6 +4,14 @@ from __future__ import annotations
 
 import os
 import re
+from pathlib import Path
+
+LOG = Path(__file__).resolve().parent.parent / "data" / "diagnostica_ultimo_giro.txt"
+
+
+def reset():
+    LOG.parent.mkdir(parents=True, exist_ok=True)
+    LOG.write_text("", encoding="utf-8")
 
 
 def dump(page, tag: str, chars: int = 700):
@@ -13,7 +21,10 @@ def dump(page, tag: str, chars: int = 700):
         body = re.sub(r"\s+", " ", page.inner_text("body", timeout=5000))[:chars]
     except Exception as e:  # noqa: BLE001
         title, url, body = "?", "?", f"(testo non leggibile: {e})"
-    print(f"::group::DEBUG {tag}\ntitolo: {title}\nurl: {url}\ntesto: {body}\n::endgroup::", flush=True)
+    msg = f"DEBUG {tag}\ntitolo: {title}\nurl: {url}\ntesto: {body}\n"
+    print(msg, flush=True)
+    with open(LOG, "a", encoding="utf-8") as f:
+        f.write(msg + "\n")
     if os.getenv("DEBUG_SCREENSHOTS"):
         os.makedirs("debug", exist_ok=True)
         try:
