@@ -1,7 +1,32 @@
+DEBUG amazon home (CAP)
+titolo: Amazon.it
+url: https://www.amazon.it/
+testo: Fai clic sul pulsante qui sotto per continuare a fare acquisti Continua con gli acquisti Continua con gli acquisti Condizioni generali di uso e vendita Informativa sulla privacy © 1996-2025, Amazon.com, Inc. o società affiliate.
+
+DEBUG amazon ricerca https://www.amazon.it/s?k=iphone+16+pro+128gb+ricondizionato
+titolo: Ci dispiace
+url: https://www.amazon.it/s?k=iphone+16+pro+128gb+ricondizionato
+testo: Ci dispiace Si è verificato un errore quando abbiamo tentato di elaborare la richiesta. Stiamo lavorando al problema e ci aspettiamo di risolverlo a breve. Si prega di notare che se stavi effettuando un ordine, non sarà stato elaborato per il momento. Per favore riprova più tardi. Ci scusiamo per l'inconveniente. Clicca qui per tornare alla home page di Amazon.it
+
+DEBUG amazon ricerca https://www.amazon.it/s?k=iphone+16+pro+256gb+ricondizionato
+titolo: Ci dispiace
+url: https://www.amazon.it/s?k=iphone+16+pro+256gb+ricondizionato
+testo: Ci dispiace Si è verificato un errore quando abbiamo tentato di elaborare la richiesta. Stiamo lavorando al problema e ci aspettiamo di risolverlo a breve. Si prega di notare che se stavi effettuando un ordine, non sarà stato elaborato per il momento. Per favore riprova più tardi. Ci scusiamo per l'inconveniente. Clicca qui per tornare alla home page di Amazon.it
+
+DEBUG amazon ricerca https://www.amazon.it/s?k=iphone+15+pro+128gb+ricondizionato
+titolo: Ci dispiace
+url: https://www.amazon.it/s?k=iphone+15+pro+128gb+ricondizionato
+testo: Ci dispiace Si è verificato un errore quando abbiamo tentato di elaborare la richiesta. Stiamo lavorando al problema e ci aspettiamo di risolverlo a breve. Si prega di notare che se stavi effettuando un ordine, non sarà stato elaborato per il momento. Per favore riprova più tardi. Ci scusiamo per l'inconveniente. Clicca qui per tornare alla home page di Amazon.it
+
+DEBUG amazon ricerca https://www.amazon.it/s?k=iphone+15+pro+256gb+ricondizionato
+titolo: Ci dispiace
+url: https://www.amazon.it/s?k=iphone+15+pro+256gb+ricondizionato
+testo: Ci dispiace Si è verificato un errore quando abbiamo tentato di elaborare la richiesta. Stiamo lavorando al problema e ci aspettiamo di risolverlo a breve. Si prega di notare che se stavi effettuando un ordine, non sarà stato elaborato per il momento. Per favore riprova più tardi. Ci scusiamo per l'inconveniente. Clicca qui per tornare alla home page di Amazon.it
+
 DEBUG amazon B0DHYDBXJ9 (0 offerte)
 titolo: Apple iPhone 16 Pro, 128GB, Titanio Nero (Ricondizionato) : Amazon.it: Elettronica
 url: https://www.amazon.it/dp/B0DHYDBXJ9?aod=1&th=1
-testo: Apple iPhone 16 Pro, 128GB, Titanio Nero (Ricondizionato) 3,9 su 5 stelle 579 voti Nessuna offerta in evidenza disponibile Al momento, non ci sono altri venditori che corrispondano alla tua località e/o alle caratteristiche dell'articolo. Prova ad aggiornare i filtri o il tuo indirizzo per trovare altri venditori. Non hai trovato quello che stavi cercando? Prendi in considerazione questi articoli alternativi Pagina 1 di 5 Previous page Apple iPhone 17, 256GB, SIM Global, Bianco- Sbloccato (Ricondizionato) Apple iPhone 17, 256GB, SIM Global, B... 4,6 su 5 stelle 241 Apple iPhone 16 Pro Max, 256GB, Titanio Sabbia (Ricondizionato) Apple iPhone 16 Pro Max, 256GB, Titanio... 4,1 su 5 stelle 831 N
+testo: Apple iPhone 16 Pro, 128GB, Titanio Nero (Ricondizionato) 3,9 su 5 stelle 579 voti Nessuna offerta in evidenza disponibile Al momento, non ci sono altri venditori che corrispondano alla tua località e/o alle caratteristiche dell'articolo. Prova ad aggiornare i filtri o il tuo indirizzo per trovare altri venditori. Non hai trovato quello che stavi cercando? Prendi in considerazione questi articoli alternativi Pagina 1 di 5 Previous page Apple iPhone 17, 256GB, SIM Global, Bianco- Sbloccato (Ricondizionato) Apple iPhone 17, 256GB, SIM Global,... 4,6 su 5 stelle 241 Apple iPhone 16 Pro Max, 256GB, Titanio Sabbia (Ricondizionato) Apple iPhone 16 Pro Max, 256GB, Titanio... 4,1 su 5 stelle 831 Nex
 
 DEBUG amazon B0DHYFYZ5K (1 offerte)
 titolo: Apple iPhone 16 Pro, 128GB, Titanio Naturale (Ricondizionato) : Amazon.it: Elettronica
@@ -42,11 +67,6 @@ DEBUG amazon B0CVJS2V8B (0 offerte)
 titolo: Apple iPhone 15 Pro 256 GB - Titanio naturale (Ricondizionato) : Amazon.it: Elettronica
 url: https://www.amazon.it/dp/B0CVJS2V8B?aod=1&th=1
 testo: Apple iPhone 15 Pro 256 GB - Titanio naturale (Ricondizionato) 3,6 su 5 stelle 2.079 voti Nessuna offerta in evidenza disponibile Al momento, non ci sono altri venditori che corrispondano alla tua località e/o alle caratteristiche dell'articolo. Prova ad aggiornare i filtri o il tuo indirizzo per trovare altri venditori. Non hai trovato quello che stavi cercando? Prendi in considerazione questi articoli alternativi Pagina 1 di 5 Previous page Apple iPhone 15 Pro 128 GB - Titanio bianco (Ricondizionato) Apple iPhone 15 Pro 128 GB - Titanio bia... 3,6 su 5 stelle 2.079 Apple iPhone 15 Pro Max 256GB - Titanio Nero (Ricondizionato) Apple iPhone 15 Pro Max 256GB - Titanio... 3,9 su 5 stelle 1.748
-
-DEBUG amazon B0CVJXXPFL (1 offerte)
-titolo: Apple iPhone 15 Pro 256GB - Titanio Bianco (Ricondizionato) : Amazon.it: Elettronica
-url: https://www.amazon.it/dp/B0CVJXXPFL?aod=1&th=1
-testo: Apple iPhone 15 Pro 256GB - Titanio Bianco (Ricondizionato) 3,6 su 5 stelle 2.079 voti Nessuna offerta in evidenza disponibile 1 opzione Ricondizionato: eccellente 723,61 € 723 , 61€ Questo articolo non può essere spedito presso l'indirizzo selezionato. Modifica l'indirizzo di spedizione. Aggiungi al carrello Spedito da Amazon UK Venditore Amazon UK Nota I prodotti internazionali sono venduti dall'estero e possono differire dai prodotti locali, tra cui la taglia, l'età delle valutazioni e la lingua del prodotto, l'etichettatura o le istruzioni. ... Altro Non hai trovato quello che stavi cercando? Prendi in considerazione questi articoli alternativi Pagina 1 di 5 Previous page Apple iPhone 16
 
 DEBUG backmarket bloccato 16pro-128 Eccellente eSIM
 titolo: 
