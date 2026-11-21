@@ -79,10 +79,15 @@ I CSV si aprono direttamente in Excel/Google Sheets (separatore virgola, UTF-8).
 
 ## Limiti da conoscere
 
-- I runner di GitHub hanno IP di data center: **Amazon a volte risponde con un captcha** e Back Market può
-  attivare la protezione anti-bot. Succede in modo intermittente: il controllo viene registrato come `bloccato`
-  (quadratino rosso nella dashboard) e si riprova l'ora successiva. Se un sito resta bloccato a lungo,
-  conviene eseguire lo scraper da un computer di casa (`python -m monitor.run`) con un *self-hosted runner*.
+- I runner di GitHub hanno IP di data center. **Amazon.it** funziona (lo scraper imposta il CAP di consegna,
+  altrimenti Amazon mostra solo le offerte che spediscono all'estero). **Back Market** al momento risponde ai
+  server GitHub con la sua verifica anti-bot: il giro viene registrato come `bloccato` (quadratino rosso nella
+  dashboard), lo scraper non insiste e riprova l'ora successiva. Per avere Back Market con continuità conviene
+  eseguire il workflow da un computer di casa con un
+  [self-hosted runner](https://docs.github.com/actions/hosting-your-own-runners) (`runs-on: self-hosted`).
+- Ogni giro sostituisce i dati della stessa ora per i siti controllati (nessun doppione se lo rilanci a mano).
+- Il file `data/diagnostica_ultimo_giro.txt` riporta titolo e inizio del testo delle pagine che non hanno
+  restituito offerte: serve a capire subito se si tratta di un blocco o di un cambio di layout.
 - I cron di GitHub Actions possono partire con qualche minuto di ritardo e vengono sospesi dopo 60 giorni senza
   attività nel repository (i commit orari dei dati lo tengono attivo).
 - Se i siti cambiano layout, i parser in `monitor/scrapers/` vanno aggiornati: i test in `tests/` usano testi
