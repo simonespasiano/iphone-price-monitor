@@ -114,3 +114,17 @@ def test_alert_dedupe():
     assert select_new_hits([o], CFG, now, state) == []        # già avvisato da poco
     o.price = 539
     assert len(select_new_hits([o], CFG, now, state)) == 1     # calo ulteriore ≥ 5 €
+
+
+def test_trendevice_listing_inline_format():
+    """Formato visto nel browser headless di GitHub: campi sulla stessa riga separati da ' | '."""
+    txt = ("Filtri\n29\nPromo\nRisparmia 50€\niPhone 16 Pro\n128 GB | Colore a sorpresa | Sim Card (include slot sim) | C Smart\n"
+           "A partire da\n€769,90\n€719,90\nPreordina\nPromo\nRisparmia 50€\niPhone 16 Pro\n128 GB | Titanio naturale | "
+           "Sim Card (include slot sim) | A Eccellente\nA partire da\n€809,90\n€759,90\nPromo\niPhone 16 Pro Max\n256 GB | Titanio nero | "
+           "Sim Card (include slot sim) | A Eccellente\nA partire da\n€999,90\n€949,90\nPromo\niPhone 16 Pro\n256 GB | Titanio sabbia | "
+           "e-Sim (no sim fisica) | A+ Come nuovo\nA partire da €1.049,90 €999,90")
+    items = trendevice.parse_listing(txt, "iPhone 16 Pro")
+    assert [(i["storage"], i["grade"], min(i["prices"])) for i in items] == [
+        (128, "C Smart", 719.9), (128, "A Eccellente", 759.9), (256, "A+ Come nuovo", 999.9)]
+    assert items[1]["color"] == "Titanio naturale" and items[0]["preorder"]
+    assert sim_from_text(items[2]["sim"]) == SIM_ESIM
