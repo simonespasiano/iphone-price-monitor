@@ -14,13 +14,43 @@ permissions:
   issues: write
   pages: write
   id-token: write
+  actions: write
 
 concurrency:
   group: monitor
   cancel-in-progress: false
 
 jobs:
+  # Fine monitoraggio: dopo FINE (ora italiana) avvisa su Telegram, disattiva questo workflow e non controlla più.
+  gate:
+    runs-on: ubuntu-latest
+    outputs:
+      active: ${{ steps.check.outputs.active }}
+    steps:
+      - id: check
+        env:
+          FINE: "2026-12-01"
+          GH_TOKEN: ${{ github.token }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          oggi=$(TZ=Europe/Rome date +%F)
+          if [[ "$oggi" > "$FINE" ]]; then
+            echo "active=false" >> "$GITHUB_OUTPUT"
+            echo "Monitoraggio terminato il $FINE: disattivo il workflow."
+            if [ -n "$TELEGRAM_BOT_TOKEN" ] && [ -n "$TELEGRAM_CHAT_ID" ]; then
+              curl -s -o /dev/null -X POST "https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage" \
+                --data-urlencode "chat_id=${TELEGRAM_CHAT_ID}" \
+                --data-urlencode "text=🏁 Monitoraggio prezzi iPhone terminato (fine prevista: 1 dicembre). Il controllo automatico è stato disattivato; per riattivarlo: Actions → Monitor prezzi → Enable workflow."
+            fi
+            gh api -X PUT "repos/${{ github.repository }}/actions/workflows/monitor.yml/disable" || true
+          else
+            echo "active=true" >> "$GITHUB_OUTPUT"
+          fi
+
   run:
+    needs: gate
+    if: needs.gate.outputs.active == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 40
     steps:
