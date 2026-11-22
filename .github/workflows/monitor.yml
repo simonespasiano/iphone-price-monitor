@@ -2,7 +2,7 @@ name: Monitor prezzi (ogni 3 ore)
 
 on:
   schedule:
-    - cron: "7 */3 * * *"      # ogni 3 ore al minuto 7 (UTC): in Italia 01:07, 04:07, 07:07, ... (ora legale: +1)
+    - cron: "30 2-23/3 * * *"  # ogni 3 ore al minuto 30 (UTC): in Italia 15:30, 18:30, 21:30, 00:30, 03:30, 06:30, 09:30, 12:30 (ora legale: +1)
   workflow_dispatch:
     inputs:
       sites:
