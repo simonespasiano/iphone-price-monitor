@@ -15,28 +15,16 @@ models:
     label: iPhone 16 Pro 128GB
     model: iPhone 16 Pro
     storage: 128
-  - key: 16pro-256
-    label: iPhone 16 Pro 256GB
-    model: iPhone 16 Pro
-    storage: 256
   - key: 15pro-128
     label: iPhone 15 Pro 128GB
     model: iPhone 15 Pro
     storage: 128
-  - key: 15pro-256
-    label: iPhone 15 Pro 256GB
-    model: iPhone 15 Pro
-    storage: 256
 
 # Soglie "offerta interessante" (prezzo totale). sim: esim | fisica | any ; grade: grado minimo
 # op: "<" oppure "<="
 thresholds:
-  - {model: 16pro-128, sim: esim,   grade: eccellente, op: "<",  price: 600}
-  - {model: 16pro-128, sim: fisica, grade: eccellente, op: "<=", price: 660}
-  - {model: 16pro-128, sim: any,    grade: premium,    op: "<=", price: 680}
-  - {model: 16pro-256, sim: any,    grade: eccellente, op: "<=", price: 700}
-  - {model: 15pro-256, sim: fisica, grade: eccellente, op: "<=", price: 590}
-  - {model: 15pro-128, sim: any,    grade: eccellente, op: "<",  price: 550}
+  - {model: 16pro-128, sim: any,   grade: eccellente, op: "<",  price: 630}
+  - {model: 15pro-128, sim: any,   grade: eccellente, op: "<",  price: 550}
 
 sources:
   amazon:
