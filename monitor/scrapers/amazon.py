@@ -151,9 +151,10 @@ def discover(raw: list[dict], cfg: dict, known: set[str]) -> list[dict]:
 def scrape(page, cfg: dict) -> tuple[list[Offer], list[dict]]:
     src = cfg["sources"]["amazon"]
     offers, runs = [], []
-    targets = list(src.get("asins", []))
-    known = {t["asin"] for t in targets}
     models = {m["key"]: m for m in cfg["models"]}
+    # gli ASIN di modelli tolti da "models" restano noti (niente riscoperta) ma non vengono controllati
+    known = {t["asin"] for t in src.get("asins", [])}
+    targets = [t for t in src.get("asins", []) if t["model"] in models]
     loc = set_location(page, str(src.get("postcode", "20121")))
     print(f"[amazon] consegna: {loc}", flush=True)
     runs.append(dict(site=SITE, target="cap", status="ok" if src.get("postcode", "20121") in loc else "avviso", n=0, error=loc[:150], secs=0))

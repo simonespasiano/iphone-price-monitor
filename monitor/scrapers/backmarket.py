@@ -112,6 +112,8 @@ def scrape(page, cfg: dict) -> tuple[list[Offer], list[dict]]:
     runs: list[dict] = []
     for p in src["pages"]:
         for key in p["models"]:
+            if key not in models:  # modello tolto da "models" in config.yaml
+                continue
             storage = int(models[key]["storage"])
             for grade in src["grades"]:
                 for sim in src["sims"]:

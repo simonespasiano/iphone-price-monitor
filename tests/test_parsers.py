@@ -93,6 +93,11 @@ def test_amazon_aod_and_eligibility():
 
 
 def test_thresholds_sim_specific():
+    # soglie fisse di prova: il test non dipende da quelle scelte in config.yaml
+    CFG = dict(load_config(), thresholds=[
+        {"model": "16pro-128", "sim": "esim", "grade": "eccellente", "op": "<", "price": 600},
+        {"model": "16pro-128", "sim": "fisica", "grade": "eccellente", "op": "<=", "price": 660},
+    ])
     o = Offer("Back Market", "16pro-128", 128, SIM_ESIM, "Titanio Nero", "Eccellente", 599)
     o.eligible = True
     assert matching_threshold(o, CFG)["sim"] == "esim"
