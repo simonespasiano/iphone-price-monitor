@@ -2,7 +2,7 @@ name: Monitor prezzi (ogni ora)
 
 on:
   schedule:
-    - cron: "7 * * * *"      # ogni ora al minuto 7 (UTC); GitHub può ritardare di qualche minuto
+    - cron: "5 35 * * *"      # ogni ora al minuto 7 (UTC); GitHub può ritardare di qualche minuto
   workflow_dispatch:
     inputs:
       sites:
