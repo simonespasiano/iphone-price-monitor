@@ -1,7 +1,12 @@
-DEBUG amazon home (CAP)
-titolo: Amazon.it
-url: https://www.amazon.it/
-testo: Fai clic sul pulsante qui sotto per continuare a fare acquisti Continua con gli acquisti Continua con gli acquisti Condizioni generali di uso e vendita Informativa sulla privacy © 1996-2025, Amazon.com, Inc. o società affiliate.
+DEBUG amazon B0CVJ5WF3K (0 offerte)
+titolo: Apple iPhone 15 Pro 128GB - Titanio Blu (Ricondizionato) : Amazon.it: Elettronica
+url: https://www.amazon.it/dp/B0CVJ5WF3K?aod=1&th=1
+testo: Passa a Contenuti principali Informazioni sull’articolo Opzioni di acquisto Recensioni Tasti di scelta rapida Cerca alt + / Carrello maiusc + alt + C Home page maiusc + alt + H Ordini maiusc + alt + O Aggiungi al carrello maiusc + alt + K Riepilogo del prodotto maiusc + alt + D Mostra/nascondi scorciatoie maiusc + alt + Z Per spostarti tra gli elementi, usa le frecce su o giù della tastiera. .it Il tuo indirizzo di consegna: 20121‌ Elettronica Tutte le categorie Settimana del Black Friday Alexa Skill Alimentari e cura della casa Amazon Fresh Amazon Global Store Amazon Haul Amazon Seconda mano App e Giochi Audiolibri Audible Auto e Moto - Parti e Accessori Bellezza Buoni Regalo Cancelleria e 
+
+DEBUG amazon B0CVJ8QRF6 (0 offerte)
+titolo: Apple iPhone 15 Pro 128GB - Titanio Naturale (Ricondizionato) : Amazon.it: Elettronica
+url: https://www.amazon.it/dp/B0CVJ8QRF6?aod=1&th=1
+testo: Passa a Contenuti principali Informazioni sull’articolo Opzioni di acquisto Recensioni Tasti di scelta rapida Cerca alt + / Carrello maiusc + alt + C Home page maiusc + alt + H Ordini maiusc + alt + O Aggiungi al carrello maiusc + alt + K Riepilogo del prodotto maiusc + alt + D Mostra/nascondi scorciatoie maiusc + alt + Z Per spostarti tra gli elementi, usa le frecce su o giù della tastiera. .it Il tuo indirizzo di consegna: 20121‌ Elettronica Tutte le categorie Settimana del Black Friday Alexa Skill Alimentari e cura della casa Amazon Fresh Amazon Global Store Amazon Haul Amazon Seconda mano App e Giochi Audiolibri Audible Auto e Moto - Parti e Accessori Bellezza Buoni Regalo Cancelleria e 
 
 DEBUG backmarket bloccato 16pro-128 Eccellente eSIM
 titolo: 
