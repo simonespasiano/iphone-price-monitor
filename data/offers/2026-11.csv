@@ -335,3 +335,84 @@ ts,site,model,storage,sim,color,grade,grade_rank,price,seller,seller_positive,ba
 2026-11-22T14:00:00Z,TrenDevice,15pro-128,128,fisica,Titanio Nero,Eccellente,3,619.0,TrenDevice,,,12,elenco,1,,https://www.trendevice.com/prodotti/iphone/serie-15/iphone-15-pro/
 2026-11-22T14:00:00Z,TrenDevice,15pro-128,128,fisica,Titanio Naturale,Eccellente,3,619.0,TrenDevice,,,12,elenco,1,preordine,https://www.trendevice.com/prodotti/iphone/serie-15/iphone-15-pro/
 2026-11-22T14:00:00Z,TrenDevice,15pro-128,128,fisica,Titanio Bianco,Premium,4,729.9,TrenDevice,,,12,elenco,1,,https://www.trendevice.com/prodotti/iphone/serie-15/iphone-15-pro/
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Nero,Eccellente,3,748.0,Alloccaz,60,≥80% (Amazon Renewed),12,finale,0,non idonea: venditore 60%,https://www.amazon.it/dp/B0DHYDBXJ9?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Nero,Accettabile,1,664.0,Loop-Mobile EU,76,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 76%",https://www.amazon.it/dp/B0DHYDBXJ9?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Nero,Accettabile,1,669.0,Nest Green,41,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 41%",https://www.amazon.it/dp/B0DHYDBXJ9?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Nero,Accettabile,1,674.0,Alloccaz,60,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 60%",https://www.amazon.it/dp/B0DHYDBXJ9?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Nero,Accettabile,1,701.0,rebuy recommerce GmbH IT,83,≥80% (Amazon Renewed),12,finale,0,non idonea: grado,https://www.amazon.it/dp/B0DHYDBXJ9?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Nero,Accettabile,1,711.99,Geekmarket tech,50,≥80% (Amazon Renewed),12,finale,0,"spedizione 4.99 €; non idonea: grado, venditore 50%",https://www.amazon.it/dp/B0DHYDBXJ9?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Nero,Accettabile,1,721.61,Ringy,33,≥80% (Amazon Renewed),12,finale,0,"spedizione 14.61 €; non idonea: grado, venditore 33%",https://www.amazon.it/dp/B0DHYDBXJ9?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Nero,Accettabile,1,728.0,Techlovers,59,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 59%",https://www.amazon.it/dp/B0DHYDBXJ9?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Nero,Eccellente,3,749.0,Wcell EU,50,≥80% (Amazon Renewed),12,finale,0,non idonea: venditore 50%,https://www.amazon.it/dp/B0DHYDBXJ9?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Nero,Eccellente,3,755.99,Geekmarket tech,50,≥80% (Amazon Renewed),12,finale,0,spedizione 4.99 €; non idonea: venditore 50%,https://www.amazon.it/dp/B0DHYDBXJ9?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Nero,Accettabile,1,784.0,MrShopIT,77,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 77%",https://www.amazon.it/dp/B0DHYDBXJ9?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Naturale,Premium,4,800.0,Phone-Buddy,88,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0DHYFYZ5K?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Naturale,Accettabile,1,688.0,Alloccaz,60,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 60%",https://www.amazon.it/dp/B0DHYFYZ5K?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Naturale,Accettabile,1,690.99,Geekmarket tech,50,≥80% (Amazon Renewed),12,finale,0,"spedizione 4.99 €; non idonea: grado, venditore 50%",https://www.amazon.it/dp/B0DHYFYZ5K?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Naturale,Accettabile,1,699.0,Loop-Mobile EU,76,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 76%",https://www.amazon.it/dp/B0DHYFYZ5K?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Naturale,Eccellente,3,702.0,Loop-Mobile EU,76,≥80% (Amazon Renewed),12,finale,0,non idonea: venditore 76%,https://www.amazon.it/dp/B0DHYFYZ5K?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Naturale,Buono,2,710.0,Phone-Buddy,88,≥80% (Amazon Renewed),12,finale,0,non idonea: grado,https://www.amazon.it/dp/B0DHYFYZ5K?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Naturale,Accettabile,1,721.61,Ringy,33,≥80% (Amazon Renewed),12,finale,0,"spedizione 14.61 €; non idonea: grado, venditore 33%",https://www.amazon.it/dp/B0DHYFYZ5K?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Naturale,Eccellente,3,729.0,Nest Green,41,≥80% (Amazon Renewed),12,finale,0,non idonea: venditore 41%,https://www.amazon.it/dp/B0DHYFYZ5K?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Naturale,Eccellente,3,729.0,Phone-Buddy,88,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0DHYFYZ5K?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Naturale,Eccellente,3,730.0,Alloccaz,60,≥80% (Amazon Renewed),12,finale,0,non idonea: venditore 60%,https://www.amazon.it/dp/B0DHYFYZ5K?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Naturale,Eccellente,3,731.0,e-recover,57,≥80% (Amazon Renewed),12,finale,0,non idonea: venditore 57%,https://www.amazon.it/dp/B0DHYFYZ5K?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Sabbia,Premium,4,850.0,Welback Srl,58,≥80% (Amazon Renewed),12,finale,0,non idonea: venditore 58%,https://www.amazon.it/dp/B0DHYF2KQG?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Sabbia,Accettabile,1,679.0,Nest Green,41,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 41%",https://www.amazon.it/dp/B0DHYF2KQG?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Sabbia,Buono,2,683.0,Loop-Mobile EU,76,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 76%",https://www.amazon.it/dp/B0DHYF2KQG?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Sabbia,Accettabile,1,687.0,Alloccaz,60,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 60%",https://www.amazon.it/dp/B0DHYF2KQG?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Sabbia,Buono,2,699.0,FonMe,83,≥80% (Amazon Renewed),12,finale,0,non idonea: grado,https://www.amazon.it/dp/B0DHYF2KQG?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Sabbia,Eccellente,3,702.0,Loop-Mobile EU,76,≥80% (Amazon Renewed),12,finale,0,non idonea: venditore 76%,https://www.amazon.it/dp/B0DHYF2KQG?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Sabbia,Eccellente,3,703.99,Reswipe,88,≥80% (Amazon Renewed),12,finale,1,spedizione 4.99 €,https://www.amazon.it/dp/B0DHYF2KQG?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Sabbia,Eccellente,3,717.0,Ava Direct,62,≥80% (Amazon Renewed),12,finale,0,non idonea: venditore 62%,https://www.amazon.it/dp/B0DHYF2KQG?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Sabbia,Eccellente,3,719.0,iMuda Investiments SL,97,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0DHYF2KQG?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Sabbia,Accettabile,1,721.7,Ringy,33,≥80% (Amazon Renewed),12,finale,0,"spedizione 14.70 €; non idonea: grado, venditore 33%",https://www.amazon.it/dp/B0DHYF2KQG?aod=1
+2026-11-22T20:00:00Z,Amazon,16pro-128,128,fisica,Titanio Sabbia,Eccellente,3,729.0,Nest Green,41,≥80% (Amazon Renewed),12,finale,0,non idonea: venditore 41%,https://www.amazon.it/dp/B0DHYF2KQG?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Blu,Premium,4,660.0,Welback!,90,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0CVJ5WF3K?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Blu,Accettabile,1,538.99,Geekmarket tech,50,≥80% (Amazon Renewed),12,finale,0,"spedizione 4.99 €; non idonea: grado, venditore 50%",https://www.amazon.it/dp/B0CVJ5WF3K?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Blu,Buono,2,560.0,Phone-Buddy,88,≥80% (Amazon Renewed),12,finale,0,non idonea: grado,https://www.amazon.it/dp/B0CVJ5WF3K?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Blu,Eccellente,3,568.0,Tech and Life,100,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0CVJ5WF3K?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Blu,Eccellente,3,572.0,Wcell EU,50,≥80% (Amazon Renewed),12,finale,0,non idonea: venditore 50%,https://www.amazon.it/dp/B0CVJ5WF3K?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Blu,Accettabile,1,589.0,Furbie Store,50,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 50%",https://www.amazon.it/dp/B0CVJ5WF3K?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Blu,Accettabile,1,590.51,Ringy,33,≥80% (Amazon Renewed),12,finale,0,"spedizione 14.51 €; non idonea: grado, venditore 33%",https://www.amazon.it/dp/B0CVJ5WF3K?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Blu,Eccellente,3,598.0,Orlado Tech,67,≥80% (Amazon Renewed),12,finale,0,non idonea: venditore 67%,https://www.amazon.it/dp/B0CVJ5WF3K?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Blu,Eccellente,3,600.0,Eniro Mall,29,≥80% (Amazon Renewed),12,finale,0,non idonea: venditore 29%,https://www.amazon.it/dp/B0CVJ5WF3K?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Blu,Buono,2,603.0,CFON,44,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 44%",https://www.amazon.it/dp/B0CVJ5WF3K?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Blu,Eccellente,3,615.0,ReNewed SRL,53,≥80% (Amazon Renewed),12,finale,0,non idonea: venditore 53%,https://www.amazon.it/dp/B0CVJ5WF3K?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Nero,Premium,4,660.0,Welback!,90,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0CVJ2RLP5?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Nero,Accettabile,1,559.0,COMENOVO,17,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 17%",https://www.amazon.it/dp/B0CVJ2RLP5?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Nero,Accettabile,1,571.99,Geekmarket tech,50,≥80% (Amazon Renewed),12,finale,0,"spedizione 4.99 €; non idonea: grado, venditore 50%",https://www.amazon.it/dp/B0CVJ2RLP5?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Nero,Accettabile,1,589.0,Furbie Store,50,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 50%",https://www.amazon.it/dp/B0CVJ2RLP5?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Nero,Eccellente,3,594.0,Orlado Tech,67,≥80% (Amazon Renewed),12,finale,0,non idonea: venditore 67%,https://www.amazon.it/dp/B0CVJ2RLP5?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Nero,Eccellente,3,595.0,Phone-Buddy,88,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0CVJ2RLP5?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Nero,Eccellente,3,597.0,DIDO-TECHNOLOGIE,,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0CVJ2RLP5?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Nero,Eccellente,3,599.0,iFonki,90,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0CVJ2RLP5?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Nero,Buono,2,603.0,CFON,44,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 44%",https://www.amazon.it/dp/B0CVJ2RLP5?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Nero,Accettabile,1,613.36,Ringy,33,≥80% (Amazon Renewed),12,finale,0,"spedizione 14.36 €; non idonea: grado, venditore 33%",https://www.amazon.it/dp/B0CVJ2RLP5?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Nero,Eccellente,3,620.0,Welback!,90,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0CVJ2RLP5?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Premium,4,660.0,Welback!,90,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Accettabile,1,529.0,Nest Green,41,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 41%",https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Buono,2,560.0,Phone-Buddy,88,≥80% (Amazon Renewed),12,finale,0,non idonea: grado,https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Eccellente,3,564.78,Phonezone e.K,84,≥80% (Amazon Renewed),12,finale,1,spedizione 7.78 €,https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Eccellente,3,572.0,Fabag SRL,97,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Accettabile,1,571.99,Geekmarket tech,50,≥80% (Amazon Renewed),12,finale,0,"spedizione 4.99 €; non idonea: grado, venditore 50%",https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Eccellente,3,573.99,Reswipe,88,≥80% (Amazon Renewed),12,finale,1,spedizione 4.99 €,https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Buono,2,578.0,Loop-Mobile EU,76,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 76%",https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Eccellente,3,579.0,iFonki,90,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Eccellente,3,580.0,Phone-Buddy,88,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
+2026-11-22T20:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Eccellente,3,580.0,ISIDE,67,≥80% (Amazon Renewed),12,finale,0,non idonea: venditore 67%,https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
+2026-11-22T20:00:00Z,TrenDevice,16pro-128,128,fisica,Colore a sorpresa,Accettabile,1,719.9,TrenDevice,,,12,elenco,0,preordine; non idonea: grado,https://www.trendevice.com/prodotti/iphone/serie-16/iphone-16-pro/
+2026-11-22T20:00:00Z,TrenDevice,16pro-128,128,fisica,Titanio Naturale,Accettabile,1,719.9,TrenDevice,,,12,elenco,0,preordine; non idonea: grado,https://www.trendevice.com/prodotti/iphone/serie-16/iphone-16-pro/
+2026-11-22T20:00:00Z,TrenDevice,16pro-128,128,fisica,Colore a sorpresa,Buono,2,729.9,TrenDevice,,,12,elenco,0,preordine; non idonea: grado,https://www.trendevice.com/prodotti/iphone/serie-16/iphone-16-pro/
+2026-11-22T20:00:00Z,TrenDevice,16pro-128,128,fisica,Titanio Naturale,Buono,2,729.9,TrenDevice,,,12,elenco,0,preordine; non idonea: grado,https://www.trendevice.com/prodotti/iphone/serie-16/iphone-16-pro/
+2026-11-22T20:00:00Z,TrenDevice,16pro-128,128,fisica,Colore a sorpresa,Eccellente,3,759.9,TrenDevice,,,12,elenco,1,,https://www.trendevice.com/prodotti/iphone/serie-16/iphone-16-pro/
+2026-11-22T20:00:00Z,TrenDevice,16pro-128,128,fisica,Titanio Naturale,Eccellente,3,759.9,TrenDevice,,,12,elenco,1,preordine,https://www.trendevice.com/prodotti/iphone/serie-16/iphone-16-pro/
+2026-11-22T20:00:00Z,TrenDevice,16pro-128,128,fisica,Titanio Sabbia,Premium,4,839.9,TrenDevice,,,12,elenco,1,,https://www.trendevice.com/prodotti/iphone/serie-16/iphone-16-pro/
+2026-11-22T20:00:00Z,TrenDevice,15pro-128,128,fisica,Colore a sorpresa,Accettabile,1,539.0,TrenDevice,,,12,elenco,0,preordine; non idonea: grado,https://www.trendevice.com/prodotti/iphone/serie-15/iphone-15-pro/
+2026-11-22T20:00:00Z,TrenDevice,15pro-128,128,fisica,Titanio Blu,Eccellente,3,579.0,TrenDevice,,,12,elenco,1,,https://www.trendevice.com/prodotti/iphone/serie-15/iphone-15-pro/
+2026-11-22T20:00:00Z,TrenDevice,15pro-128,128,fisica,Colore a sorpresa,Buono,2,579.0,TrenDevice,,,12,elenco,0,preordine; non idonea: grado,https://www.trendevice.com/prodotti/iphone/serie-15/iphone-15-pro/
+2026-11-22T20:00:00Z,TrenDevice,15pro-128,128,fisica,Titanio Naturale,Buono,2,579.0,TrenDevice,,,12,elenco,0,preordine; non idonea: grado,https://www.trendevice.com/prodotti/iphone/serie-15/iphone-15-pro/
+2026-11-22T20:00:00Z,TrenDevice,15pro-128,128,fisica,Titanio Nero,Eccellente,3,589.0,TrenDevice,,,12,elenco,1,,https://www.trendevice.com/prodotti/iphone/serie-15/iphone-15-pro/
+2026-11-22T20:00:00Z,TrenDevice,15pro-128,128,fisica,Colore a sorpresa,Eccellente,3,619.0,TrenDevice,,,12,elenco,1,,https://www.trendevice.com/prodotti/iphone/serie-15/iphone-15-pro/
+2026-11-22T20:00:00Z,TrenDevice,15pro-128,128,fisica,Titanio Naturale,Eccellente,3,619.0,TrenDevice,,,12,elenco,1,preordine,https://www.trendevice.com/prodotti/iphone/serie-15/iphone-15-pro/
+2026-11-22T20:00:00Z,TrenDevice,15pro-128,128,fisica,Titanio Bianco,Premium,4,729.9,TrenDevice,,,12,elenco,1,,https://www.trendevice.com/prodotti/iphone/serie-15/iphone-15-pro/
