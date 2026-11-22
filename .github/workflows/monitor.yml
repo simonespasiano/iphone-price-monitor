@@ -1,8 +1,8 @@
-name: Monitor prezzi (ogni 30 minuti)
+name: Monitor prezzi (ogni 3 ore)
 
 on:
   schedule:
-    - cron: "5,35 * * * *"    # ogni 30 minuti, ai minuti 5 e 35 (UTC); GitHub può ritardare di qualche minuto
+    - cron: "7 */3 * * *"      # ogni 3 ore al minuto 7 (UTC): in Italia 01:07, 04:07, 07:07, ... (ora legale: +1)
   workflow_dispatch:
     inputs:
       sites:

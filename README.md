@@ -42,7 +42,7 @@ primo controllo. In alternativa, a mano:
 
 1. Crea un repository pubblico vuoto su github.com e carica i file del progetto.
 2. *Settings → Pages → Build and deployment → Source:* **GitHub Actions**.
-3. *Actions → Monitor prezzi (ogni ora) → Run workflow* per il primo giro.
+3. *Actions → Monitor prezzi (ogni 3 ore) → Run workflow* per il primo giro.
 
 ### Telegram (facoltativo)
 
