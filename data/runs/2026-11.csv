@@ -69,3 +69,9 @@ w): giro Amazon saltato",0
 2026-11-22T20:00:00Z,Back Market,*,bloccato,0,verifica anti-bot del sito,8
 2026-11-22T20:00:00Z,TrenDevice,iPhone 16 Pro,ok,7,,7
 2026-11-22T20:00:00Z,TrenDevice,iPhone 15 Pro,ok,8,,6
+2026-11-23T03:00:00Z,Amazon,cap,bloccato,0,"CAP non impostato (CAP non impostato: Page.wait_for_selector: Timeout 15000ms exceeded.
+Call log:
+w): giro Amazon saltato",0
+2026-11-23T03:00:00Z,Back Market,*,bloccato,0,verifica anti-bot del sito,8
+2026-11-23T03:00:00Z,TrenDevice,iPhone 16 Pro,ok,7,,7
+2026-11-23T03:00:00Z,TrenDevice,iPhone 15 Pro,ok,8,,6
