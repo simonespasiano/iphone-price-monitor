@@ -1,30 +1,10 @@
-DEBUG swappie iPhone 16 Pro
-titolo: Ci siamo quasi…
-url: https://swappie.com/it/modello/iphone-16-pro/
-testo: swappie.com Esecuzione della verifica di sicurezza Questo sito web utilizza un servizio di sicurezza per la protezione dai bot dannosi. Questa è la pagina che viene visualizzata durante la verifica del sito web. Ray ID: a60f27e5d822ed3b Prestazioni e sicurezza di Cloudflare Privacy
-
-DEBUG swappie iPhone 15 Pro
-titolo: Ci siamo quasi…
-url: https://swappie.com/it/modello/iphone-15-pro/
-testo: swappie.com Esecuzione della verifica di sicurezza Questo sito web utilizza un servizio di sicurezza per la protezione dai bot dannosi. Questa è la pagina che viene visualizzata durante la verifica del sito web. Ray ID: a60f27fb3961ed3b Prestazioni e sicurezza di Cloudflare Privacy
-
 DEBUG refurbed iPhone 16 Pro
 titolo: iPhone 16 Pro - ricondizionato: smartphone versatile per ogni giorno
 url: https://www.refurbed.it/p/iphone-16-pro/
-testo: Preferenze sui cookie I nostri prodotti e i nostri cookie hanno una cosa in comune: entrambi vengono riutilizzati. Grazie al riutilizzo dei cookie, possiamo fornirti contenuti ottimizzati e più pertinenti alle tue esigenze.Per far sì che ciò funzioni correttamente, ti chiediamo il consenso per analizzare il tuo comportamento di navigazione e personalizzare i contenuti e la pubblicità per te - con cookie di prima e terza parte. Naturalmente, solo con il tuo consenso. Potrai modificare le tue impostazioni dei cookie in qualsiasi momento. Leggi la nostra informativa sulla privacy. Leggi l'informativa sui cookie del responsabile del trattamento dei dati. Uso ristretto PREFERENZE SUI COOKIE ACCETTO TUTTI I COOKIE Chi siamo Vendere Assistenza Tutte le categorie 💚 Black Friday Smartphone Portatili Tablet Smartwatch Accessori iPhone Cuffie Samsung iPad MacBook iPhone 15 iPhone 14 iPhone 17 ⚡ Offerta Flash! Risparmia l'8% EXTRA sulle serie iPhone 16 e 17 con il codice IPHONE8OFF · Acquista QUI ora Home Prodotti Cellulari & Smartphone iPhone Altri modelli Recensioni Informazioni prodotto Domande frequenti Confronta Torna Su iPhone 16 Pro 128 GB | Dual-SIM (2 x eSIM) | Titanio deserto (4,8/5) Immagine a solo scopo illustrativo Scegli grado estetico (Info) Molto buono Molto buono Ottimo Più venduto +30,63 € Premium Come nuovo +44,44 € Selezionare la batteria (Info) Più green Più green Nuova +30,75 € *Minor impatto ecologico rispetto all'acquisto di un prodotto con batteria nuova. Memoria
+testo: Preferenze sui cookie I nostri prodotti e i nostri cookie hanno una cosa in comune: entrambi vengono riutilizzati. Grazie al riutilizzo dei cookie, possiamo fornirti contenuti ottimizzati e più pertinenti alle tue esigenze.Per far sì che ciò funzioni correttamente, ti chiediamo il consenso per analizzare il tuo comportamento di navigazione e personalizzare i contenuti e la pubblicità per te - con cookie di prima e terza parte. Naturalmente, solo con il tuo consenso. Potrai modificare le tue impostazioni dei cookie in qualsiasi momento. Leggi la nostra informativa sulla privacy. Leggi l'informativa sui cookie del responsabile del trattamento dei dati. Uso ristretto PREFERENZE SUI COOKIE ACCETTO TUTTI I COOKIE Chi siamo Vendere Assistenza Tutte le categorie 💚 Black Friday Smartphone Portatili Tablet Smartwatch Accessori iPhone Cuffie Samsung iPad MacBook iPhone 15 iPhone 14 iPhone 17 ⚡ Offerta Flash! Risparmia l'8% EXTRA sulle serie iPhone 16 e 17 con il codice IPHONE8OFF · Acquista QUI ora Home Prodotti Cellulari & Smartphone iPhone Altri modelli Recensioni Informazioni prodotto Domande frequenti Confronta Torna Su iPhone 16 Pro 128 GB | Dual-SIM (2 x eSIM) | Titanio deserto (4,8/5) Immagine a solo scopo illustrativo Scegli grado estetico (Info) Molto buono Molto buono Ottimo Più venduto +30,63 € Premium Come nuovo +44,44 € Selezionare la batteria (Info) Più green Nuova +30,75 € Più green *Minor impatto ecologico rispetto all'acquisto di un prodotto con batteria nuova. Memoria
 
 DEBUG refurbed iPhone 15 Pro
 titolo: iPhone 15 Pro - ricondizionato: prestazioni elevate per tutti
 url: https://www.refurbed.it/p/iphone-15-pro/
 testo: Preferenze sui cookie I nostri prodotti e i nostri cookie hanno una cosa in comune: entrambi vengono riutilizzati. Grazie al riutilizzo dei cookie, possiamo fornirti contenuti ottimizzati e più pertinenti alle tue esigenze.Per far sì che ciò funzioni correttamente, ti chiediamo il consenso per analizzare il tuo comportamento di navigazione e personalizzare i contenuti e la pubblicità per te - con cookie di prima e terza parte. Naturalmente, solo con il tuo consenso. Potrai modificare le tue impostazioni dei cookie in qualsiasi momento. Leggi la nostra informativa sulla privacy. Leggi l'informativa sui cookie del responsabile del trattamento dei dati. Uso ristretto PREFERENZE SUI COOKIE ACCETTO TUTTI I COOKIE Chi siamo Vendere Assistenza Tutte le categorie 💚 Black Friday Smartphone Portatili Tablet Smartwatch Accessori iPhone Cuffie Samsung iPad MacBook iPhone 15 iPhone 14 iPhone 17 ⚡ Offerta Flash! Risparmia l'8% EXTRA sulle serie iPhone 16 e 17 con il codice IPHONE8OFF · Acquista QUI ora Home Prodotti Cellulari & Smartphone iPhone Altri modelli Recensioni Informazioni prodotto Domande frequenti Confronta Torna Su iPhone 15 Pro 128 GB | Dual-SIM (eSIM, Nano-SIM) | Titanio Blu (4,8/5) Immagine a solo scopo illustrativo Scegli grado estetico (Info) Buono Buono Molto buono +56,00 € Ottimo Più venduto +86,00 € Premium Come nuovo +185,00 € Selezionare la batteria (Info) Più green Più green Nuova +58,99 € *Minor impatto ecologico rispetto all'acquisto di un prodotto con batteria nu
-
-DEBUG amazon home (CAP)
-titolo: Amazon.it
-url: https://www.amazon.it/
-testo: Fai clic sul pulsante qui sotto per continuare a fare acquisti Continua con gli acquisti Continua con gli acquisti Condizioni generali di uso e vendita Informativa sulla privacy © 1996-2025, Amazon.com, Inc. o società affiliate.
-
-DEBUG amazon home (CAP)
-titolo: Amazon.it
-url: https://www.amazon.it/
-testo: Fai clic sul pulsante qui sotto per continuare a fare acquisti Continua con gli acquisti Continua con gli acquisti Condizioni generali di uso e vendita Informativa sulla privacy © 1996-2025, Amazon.com, Inc. o società affiliate.
 
