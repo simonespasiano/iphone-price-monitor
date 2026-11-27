@@ -27,7 +27,7 @@ def flatten(text: str) -> str:
 def parse_selected(text: str) -> dict | None:
     """Configurazione mostrata e suo prezzo; None se non disponibile o non leggibile."""
     flat = flatten(text)
-    if re.search(r"non è più disponibile|esaurit", flat, re.I):
+    if re.search(r"non è più disponibile", flat, re.I):   # "Esaurito" compare anche accanto ad altri colori
         return None
     m = SUMMARY.search(flat)
     if not m:
@@ -40,6 +40,30 @@ def parse_selected(text: str) -> dict | None:
         return None
     storage = 1000 if m.group(2) == "TB" else int(m.group(1))
     return {"storage": storage, "color": m.group(3).strip(), "grade": m.group(4), "price": prices[0]}
+
+
+DELTA = re.compile(r"(Buono|Molto buono|Eccellente|Premium)(?:\s*\+\s*€\s?(\d{1,3}(?:[ .\u00a0\u202f]\d{3})*))?")
+
+
+def parse_grade_deltas(text: str) -> list[dict]:
+    """Ripiego senza clic: prezzo dei gradi alla memoria e al colore già selezionati, dai supplementi
+    della sezione Condizione (es. 'Buono Molto buono Eccellente + € 90 Premium').
+    Restituisce solo i gradi con un supplemento esplicito (quelli senza supplemento possono essere esauriti)."""
+    sel = parse_selected(text)
+    if not sel:
+        return []
+    flat = flatten(text).replace(" | ", " ")
+    i = flat.find("Condizione")
+    j = flat.find("Batteria", i)
+    if i < 0 or j < 0:
+        return []
+    out = []
+    for m in DELTA.finditer(flat[i:j]):
+        grade, delta = m.group(1), m.group(2)
+        if grade == sel["grade"] or not delta:
+            continue
+        out.append({**sel, "grade": grade, "price": round(sel["price"] + parse_price(delta), 2)})
+    return out
 
 
 def _click(page, text: str) -> bool:
@@ -107,6 +131,20 @@ def scrape(page, cfg: dict) -> tuple[list[Offer], list[dict]]:
                         battery="≥95%" if grade == "Premium" else "≥86%", url=page.url,
                         notes="SIM da verificare (modelli EU: Nano-SIM + eSIM)",
                     ))
+            if not got:
+                # i clic non hanno funzionato: usa i supplementi mostrati per memoria/colore preselezionati
+                page.goto(p["url"], wait_until="domcontentloaded", timeout=45000)
+                page.wait_for_timeout(3000)
+                wanted = set(src.get("grades", ["Eccellente", "Premium"]))
+                for d in parse_grade_deltas(page.inner_text("body")):
+                    key = model_key(cfg, p["model"], d["storage"])
+                    if key and d["grade"] in wanted:
+                        got.append(Offer(
+                            site=SITE, model=key, storage=d["storage"], sim=SIM_FISICA, color=d["color"],
+                            grade=d["grade"], price=d["price"], seller="Swappie", price_source="selettore",
+                            battery="≥95%" if d["grade"] == "Premium" else "≥86%", url=p["url"],
+                            notes="prezzo calcolato dal supplemento del grado; SIM da verificare",
+                        ))
             if not got:
                 dump(page, f"swappie {p['model']}", 1500)
             offers += got

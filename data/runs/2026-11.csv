@@ -178,13 +178,30 @@ w): giro Amazon saltato",0
 2026-11-27T06:00:00Z,Swappie,iPhone 15 Pro,bloccato,0,verifica anti-bot del sito,3
 2026-11-27T06:00:00Z,Refurbed,iPhone 16 Pro,ok,5,,4
 2026-11-27T06:00:00Z,Refurbed,iPhone 15 Pro,ok,8,,4
-2026-11-27T07:00:00Z,Amazon,cap,bloccato,0,"CAP non impostato (CAP non impostato: Page.wait_for_selector: Timeout 15000ms exceeded.
-Call log:
-w): giro Amazon saltato",0
-2026-11-27T07:00:00Z,Back Market,*,bloccato,0,verifica anti-bot del sito,8
-2026-11-27T07:00:00Z,TrenDevice,iPhone 16 Pro,ok,14,,6
-2026-11-27T07:00:00Z,TrenDevice,iPhone 15 Pro,ok,12,,7
-2026-11-27T07:00:00Z,Swappie,iPhone 16 Pro,bloccato,0,verifica anti-bot del sito,3
-2026-11-27T07:00:00Z,Swappie,iPhone 15 Pro,bloccato,0,verifica anti-bot del sito,3
-2026-11-27T07:00:00Z,Refurbed,iPhone 16 Pro,ok,5,,5
-2026-11-27T07:00:00Z,Refurbed,iPhone 15 Pro,ok,8,,4
+2026-11-27T07:00:00Z,Amazon,cap,ok,0,20121‌,0
+2026-11-27T07:00:00Z,Amazon,https://www.amazon.it/s?k=iphone+16+pro+128gb+ricondizionato,ok,0,,4
+2026-11-27T07:00:00Z,Amazon,https://www.amazon.it/s?k=iphone+16+pro+256gb+ricondizionato,ok,3,,4
+2026-11-27T07:00:00Z,Amazon,https://www.amazon.it/s?k=iphone+15+pro+128gb+ricondizionato,ok,1,,4
+2026-11-27T07:00:00Z,Amazon,https://www.amazon.it/s?k=iphone+15+pro+256gb+ricondizionato,ok,0,,4
+2026-11-27T07:00:00Z,Amazon,B0DHYDBXJ9,ok,11,,7
+2026-11-27T07:00:00Z,Amazon,B0DHYFYZ5K,ok,11,,7
+2026-11-27T07:00:00Z,Amazon,B0DHYF2KQG,ok,11,,7
+2026-11-27T07:00:00Z,Amazon,B0DHYDMJ1W,ok,11,,6
+2026-11-27T07:00:00Z,Amazon,B0CVJ5WF3K,ok,11,,6
+2026-11-27T07:00:00Z,Amazon,B0CVJ2RLP5,ok,11,,6
+2026-11-27T07:00:00Z,Amazon,B0CVK3WMT3,ok,11,,6
+2026-11-27T07:00:00Z,Amazon,B0CVJVJNQS,ok,11,,6
+2026-11-27T07:00:00Z,Amazon,B0CVJS2V8B,ok,11,,6
+2026-11-27T07:00:00Z,Amazon,B0DHYD5ZWJ,ok,11,,6
+2026-11-27T07:00:00Z,Amazon,B0DHYD679P,ok,11,,6
+2026-11-27T07:00:00Z,Amazon,B0CVJXXPFL,ok,11,,6
+2026-11-27T07:00:00Z,Amazon,B0CVJ8QRF6,ok,11,,6
+2026-11-27T07:00:00Z,Back Market,*,bloccato,0,verifica anti-bot del sito,6
+2026-11-27T07:00:00Z,TrenDevice,iPhone 16 Pro,ok,14,,7
+2026-11-27T07:00:00Z,TrenDevice,iPhone 15 Pro,ok,12,,6
+2026-11-27T07:00:00Z,Swappie,iPhone 16 Pro,vuoto,0,"non trovati: 128 GB, 256 GB",24
+2026-11-27T07:00:00Z,Swappie,iPhone 15 Pro,vuoto,0,"non trovati: 128 GB, 256 GB",23
+2026-11-27T07:00:00Z,Refurbed,iPhone 16 Pro,ok,5,,4
+2026-11-27T07:00:00Z,Refurbed,iPhone 15 Pro,ok,9,,4
+2026-11-27T08:00:00Z,Swappie,iPhone 16 Pro,ok,1,"non trovati: 128 GB, 256 GB",24
+2026-11-27T08:00:00Z,Swappie,iPhone 15 Pro,ok,2,"non trovati: 128 GB, 256 GB",23
