@@ -85,9 +85,7 @@ sources:
     grades: [Eccellente, Premium]
   refurbed:
     enabled: true
-    # Configuratore: lo scraper clicca memoria e grado (Ottimo = Eccellente, Premium = Come nuovo)
-    storages: [128, 256]
-    grades: [Ottimo, Premium]
+    # Elenco "configurazioni suggerite" (Ottimo = Eccellente, Premium = Come nuovo)
     pages:
       - {url: "https://www.refurbed.it/p/iphone-16-pro/", model: iPhone 16 Pro}
       - {url: "https://www.refurbed.it/p/iphone-15-pro/", model: iPhone 15 Pro}

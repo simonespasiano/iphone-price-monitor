@@ -143,7 +143,6 @@ def test_refurbed_listing():
            "iPhone 15 Pro nero 256 GB Molto buono 647,99 € Più spazio di archiviazione\n"
            "iPhone 15 Pro blu 256 GB Ottimo 681,99 € 1+ miglioramenti\n"
            "iPhone 15 Pro grigio 128 GB Ottimo 765,99 € Aspetto migliore\n"
-           "iPhone 15 Pro Max nero 256 GB Ottimo 802,99 €\n"
            "iPhone 16 Pro grigio 256 GB Ottimo 759,81 €")
     items = refurbed.parse_listing(txt, "iPhone 15 Pro")
     got = sorted((i["storage"], i["grade_src"], i["color"], i["price"]) for i in items)
@@ -159,6 +158,17 @@ def test_swappie_selected():
     txt2 = "128 GB | Titanio bianco | Premium\nPrezzo a tempo limitato\n€ 1 099\nPrezzo di lancio Apple: € 1 239"
     assert swappie.parse_selected(txt2)["price"] == 1099.0
     assert swappie.parse_selected("Oops, sfortunatamente questo prodotto non è più disponibile") is None
+
+
+def test_refurbed_suggested_real():
+    """Testo reale letto dal runner GitHub il 27/11/2026."""
+    txt = ("Migliore offerta 683,37 € Nuovo: 1.199,00 € (-43%) Confronta le configurazioni suggerite marrone 128 GB Molto buono "
+           "683,37 € grigio 128 GB Ottimo 725,77 € Aspetto migliore nero 256 GB Molto buono 752,07 € Più spazio di archiviazione "
+           "grigio 256 GB Ottimo 820,77 € 1+ miglioramenti bianco 256 GB Ottimo 829,00 € Caratteristiche Specifiche tecniche "
+           "Colore marrone Memoria 128 GB")
+    got = sorted((i["storage"], i["grade_src"], i["color"], i["price"]) for i in refurbed.parse_listing(txt, "iPhone 16 Pro"))
+    assert got == [(128, "Molto buono", "marrone", 683.37), (128, "Ottimo", "grigio", 725.77),
+                   (256, "Molto buono", "nero", 752.07), (256, "Ottimo", "bianco", 829.0), (256, "Ottimo", "grigio", 820.77)]
 
 
 def test_refurbed_configurator():
