@@ -112,7 +112,11 @@ jobs:
         run: |
           $ErrorActionPreference = 'Stop'
           $py = $null
-          if (Get-Command py -ErrorAction SilentlyContinue) { $py = 'py' ; $pyargs = @('-3') }
+          if (Get-Command py -ErrorAction SilentlyContinue) {
+            $py = 'py' ; $pyargs = @('-3')
+            # preferisce una versione con pacchetti precompilati per tutte le dipendenze
+            foreach ($v in '3.12', '3.13', '3.14') { & py "-$v" --version *> $null; if ($LASTEXITCODE -eq 0) { $pyargs = @("-$v"); break } }
+          }
           elseif (Get-Command python -ErrorAction SilentlyContinue) { $py = 'python' ; $pyargs = @() }
           if (-not $py) {
             Write-Output "::error::Python non trovato sul PC: installa Python 3.12 da python.org (opzioni 'Install for all users' e 'Add python.exe to PATH'), poi riavvia il servizio del runner."
@@ -123,6 +127,7 @@ jobs:
           Add-Content -Path $env:GITHUB_PATH -Value "$PWD\.venv\Scripts"
       - name: Dipendenze
         run: |
+          python -m pip install -q --upgrade pip
           python -m pip install -q -r requirements.txt
           python -m playwright install chromium
       - name: Controllo siti
