@@ -70,6 +70,12 @@ def scrape(page, cfg: dict) -> tuple[list[Offer], list[dict]]:
         try:
             page.goto(p["url"], wait_until="domcontentloaded", timeout=45000)
             page.wait_for_timeout(3000)
+            title = page.title()
+            if "ci siamo quasi" in title.lower() or "just a moment" in title.lower():
+                # verifica anti-bot Cloudflare (succede dai server GitHub): non insistere
+                runs.append(dict(site=SITE, target=p["model"], status="bloccato", n=0,
+                                 error="verifica anti-bot del sito", secs=round(time.time() - t0)))
+                continue
             for label in ["Rifiuta", "Rifiuta tutto", "Solo necessari", "Accetta solo i necessari"]:
                 b = page.get_by_role("button", name=re.compile(label, re.I))
                 if b.count():

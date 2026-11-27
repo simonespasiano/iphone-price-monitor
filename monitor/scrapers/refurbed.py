@@ -50,7 +50,7 @@ def scrape(page, cfg: dict) -> tuple[list[Offer], list[dict]]:
         try:
             page.goto(p["url"], wait_until="domcontentloaded", timeout=45000)
             page.wait_for_timeout(3000)
-            for label in ["Rifiuta", "Rifiuta tutto", "Solo necessari", "Accetta solo"]:
+            for label in ["Uso ristretto", "Rifiuta", "Rifiuta tutto", "Solo necessari"]:
                 b = page.get_by_role("button", name=re.compile(label, re.I))
                 if b.count():
                     try:
@@ -74,7 +74,7 @@ def scrape(page, cfg: dict) -> tuple[list[Offer], list[dict]]:
                     notes=f"grado Refurbed: {it['grade_src']}; SIM da verificare (di solito Nano-SIM + eSIM)",
                 ))
             if not got:
-                dump(page, f"refurbed {p['model']}", 1500)
+                dump(page, f"refurbed {p['model']}", 8000)
             offers += got
             runs.append(dict(site=SITE, target=p["model"], status="ok" if got else "vuoto", n=len(got), error="",
                              secs=round(time.time() - t0)))
