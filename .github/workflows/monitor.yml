@@ -114,5 +114,8 @@ jobs:
         with: { enablement: true }
       - uses: actions/upload-pages-artifact@v3
         with: { path: docs }
+      # Un errore temporaneo di GitHub Pages non deve segnare il giro come fallito (e mandarti una mail):
+      # i dati sono già salvati, la dashboard si aggiorna al giro successivo.
       - id: deployment
         uses: actions/deploy-pages@v4
+        continue-on-error: true
