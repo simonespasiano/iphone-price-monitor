@@ -1,11 +1,12 @@
 """Esegue un controllo completo: scraping dei siti, salvataggio storico, avvisi, rigenerazione dashboard.
 
-Uso:  python -m monitor.run [--sites amazon,backmarket,trendevice] [--no-alerts] [--headed]
+Uso:  python -m monitor.run [--sites amazon,backmarket,trendevice,swappie,refurbed] [--no-alerts] [--headed]
 """
 from __future__ import annotations
 
 import argparse
 import sys
+import time
 from datetime import datetime, timezone
 
 from .alerts import load_state, save_state, select_new_hits, send
@@ -15,11 +16,25 @@ from .debug import reset as reset_debug
 from .config import load_config
 from .rules import is_eligible
 from .storage import save
-from .scrapers import amazon, backmarket, trendevice
+from .scrapers import amazon, backmarket, refurbed, swappie, trendevice
 
-SCRAPERS = {"amazon": amazon, "backmarket": backmarket, "trendevice": trendevice}
+SCRAPERS = {"amazon": amazon, "backmarket": backmarket, "trendevice": trendevice,
+            "swappie": swappie, "refurbed": refurbed}
 UA = ("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) "
       "Chrome/131.0.0.0 Safari/537.36")
+
+
+def _scrape_site(browser, name: str, cfg: dict):
+    """Ogni sito gira in un contesto isolato: un errore su un sito non ferma gli altri."""
+    ctx = browser.new_context(locale="it-IT", timezone_id="Europe/Rome", user_agent=UA,
+                              viewport={"width": 1366, "height": 900},
+                              extra_http_headers={"Accept-Language": "it-IT,it;q=0.9,en;q=0.6"})
+    try:
+        return SCRAPERS[name].scrape(ctx.new_page(), cfg)
+    except Exception as e:  # noqa: BLE001
+        return [], [dict(site=name, target="*", status="errore", n=0, error=str(e)[:200], secs=0)]
+    finally:
+        ctx.close()
 
 
 def main(argv=None) -> int:
@@ -41,17 +56,16 @@ def main(argv=None) -> int:
         for name in args.sites.split(","):
             if not cfg["sources"].get(name, {}).get("enabled"):
                 continue
-            ctx = browser.new_context(locale="it-IT", timezone_id="Europe/Rome", user_agent=UA,
-                                      viewport={"width": 1366, "height": 900},
-                                      extra_http_headers={"Accept-Language": "it-IT,it;q=0.9,en;q=0.6"})
-            page = ctx.new_page()
-            try:
-                o, r = SCRAPERS[name].scrape(page, cfg)
-            except Exception as e:  # noqa: BLE001
-                o, r = [], [dict(site=name, target="*", status="errore", n=0, error=str(e)[:200], secs=0)]
+            o, r = _scrape_site(browser, name, cfg)
+            # Amazon: se dai server GitHub non si riesce a impostare il CAP, riprova una volta
+            # con un contesto nuovo (cookie puliti) dopo una pausa, invece di saltare tutto il giro.
+            if name == "amazon" and not o and any(x["target"] == "cap" and x["status"] == "bloccato" for x in r):
+                print("[amazon] CAP non impostato: nuovo tentativo tra 45 s", flush=True)
+                time.sleep(45)
+                o, r2 = _scrape_site(browser, name, cfg)
+                r = [x for x in r if x["target"] != "cap"] + r2
             offers += o
             runs += r
-            ctx.close()
             print(f"[{name}] {len(o)} offerte, esiti: " + ", ".join(f"{x['target']}={x['status']}" for x in r), flush=True)
         browser.close()
 

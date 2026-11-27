@@ -1,6 +1,6 @@
 # Monitor prezzi iPhone ricondizionati
 
-Controlla **ogni ora** Amazon.it, Back Market e TrenDevice per gli iPhone configurati, salva tutto lo storico
+Controlla **ogni ora** Amazon.it, Back Market, TrenDevice, Swappie e Refurbed per gli iPhone configurati, salva tutto lo storico
 nel repository e pubblica una **dashboard** su GitHub Pages per vedere la situazione ora per ora e fare analisi.
 Quando un'offerta idonea scende sotto soglia apre una **issue GitHub** (ti arriva email/notifica) e, se configurato,
 manda un messaggio **Telegram**.
@@ -42,7 +42,7 @@ primo controllo. In alternativa, a mano:
 
 1. Crea un repository pubblico vuoto su github.com e carica i file del progetto.
 2. *Settings → Pages → Build and deployment → Source:* **GitHub Actions**.
-3. *Actions → Monitor prezzi (ogni 3 ore) → Run workflow* per il primo giro.
+3. *Actions → Monitor prezzi (ogni ora) → Run workflow* per il primo giro.
 
 ### Telegram (facoltativo)
 
@@ -56,6 +56,7 @@ primo controllo. In alternativa, a mano:
    riepilogo di esempio; se qualcosa non va, il log del job dice cosa correggere
    (secret mancante, token non valido, chat ID errato o bot non avviato).
 
+Di default (`telegram_every_run: false`) Telegram scrive **solo quando c'è un'offerta sotto soglia**.
 Con `telegram_every_run: true` in `config.yaml` ricevi un **riepilogo a ogni verifica**
 (esito, miglior prezzo per modello con link «apri offerta» e distanza dall’obiettivo, stato dei siti) più un messaggio
 separato con i link quando c'è un'offerta nuova. Con `false` ricevi solo gli avvisi.
@@ -85,6 +86,19 @@ Ogni esecuzione oraria scrive anche il report nel riepilogo del workflow (tab *A
 
 I CSV si aprono direttamente in Excel/Google Sheets (separatore virgola, UTF-8).
 
+## Siti e gradi
+
+| Sito | Gradi considerati idonei | Note |
+|---|---|---|
+| Amazon.it | Eccellente, Premium | venditore ≥ 80% positivi; batteria ≥ 80% (Premium ≥ 90%) |
+| Back Market | Eccellente, Premium | prezzo finale dopo la selezione; batteria ≥ 80% (Premium ≥ 90%, parti originali) |
+| TrenDevice | A Eccellente, A+ Come nuovo | batteria ≥ 80% |
+| Swappie | Eccellente, Premium | batteria ≥ 86% (Premium ≥ 95%) |
+| Refurbed | Ottimo (= Eccellente) | "Molto buono" ammette micrograffi sul display: non idoneo; batteria non dichiarata |
+
+Gli scraper di Swappie e Refurbed sono stati aggiunti il 27/11/2026: se nella dashboard compaiono come `vuoto`,
+il file `data/diagnostica_ultimo_giro.txt` mostra il testo letto per adattare il parser.
+
 ## Limiti da conoscere
 
 - I runner di GitHub hanno IP di data center. **Amazon.it** funziona (lo scraper imposta il CAP di consegna,
@@ -92,10 +106,16 @@ I CSV si aprono direttamente in Excel/Google Sheets (separatore virgola, UTF-8).
   server GitHub con la sua verifica anti-bot: il giro viene registrato come `bloccato` (quadratino rosso nella
   dashboard), lo scraper non insiste e riprova l'ora successiva. Per avere Back Market con continuità conviene
   eseguire il workflow da un computer di casa con un
-  [self-hosted runner](https://docs.github.com/actions/hosting-your-own-runners) (`runs-on: self-hosted`).
+  [self-hosted runner](https://docs.github.com/actions/hosting-your-own-runners): registra il PC come runner
+  (*Settings → Actions → Runners → New self-hosted runner*, servono Python 3.12 e Git Bash) e crea la variabile
+  di repository `MONITOR_RUNNER` = `self-hosted`. Senza la variabile il workflow continua a usare `ubuntu-latest`.
+- **Amazon** a volte risponde ai server GitHub con una pagina "Continua con gli acquisti" e il CAP non si imposta:
+  lo scraper ora riprova una volta con un contesto nuovo dopo 45 secondi invece di saltare il giro.
 - Ogni giro sostituisce i dati della stessa ora per i siti controllati (nessun doppione se lo rilanci a mano).
 - Il file `data/diagnostica_ultimo_giro.txt` riporta titolo e inizio del testo delle pagine che non hanno
   restituito offerte: serve a capire subito se si tratta di un blocco o di un cambio di layout.
+- **I cron di GitHub non sono puntuali**: dal 21 al 27/11, con un cron ogni 3 ore, sono partiti 17 giri su 56.
+  Per questo il workflow ora ha due cron all'ora (minuto 7 e 37): se uno viene saltato, parte l'altro.
 - I cron di GitHub Actions possono partire con qualche minuto di ritardo e vengono sospesi dopo 60 giorni senza
   attività nel repository (i commit orari dei dati lo tengono attivo).
 - Se i siti cambiano layout, i parser in `monitor/scrapers/` vanno aggiornati: i test in `tests/` usano testi

@@ -11,16 +11,16 @@
 :root{
   --bg:#f6f7f9;--panel:#ffffff;--ink:#14171c;--muted:#5d6675;--line:#e3e6eb;--accent:#2f6fde;
   --good:#1a8a4a;--good-bg:#e6f5ec;--bad:#c0392b;--bad-bg:#fbeaea;--warn:#a86b00;--warn-bg:#fff4dc;
-  --s1:#2f6fde;--s2:#d9480f;--s3:#2b8a3e;--s4:#7048e8;--thr:#c0392b;
+  --s1:#2f6fde;--s2:#d9480f;--s3:#2b8a3e;--s4:#7048e8;--s5:#0c8599;--s6:#c2255c;--thr:#c0392b;
 }
 @media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
   --bg:#0f1216;--panel:#171b21;--ink:#e8ebef;--muted:#9aa3b2;--line:#2a3039;--accent:#6ea0ff;
   --good:#4cc27a;--good-bg:#14301f;--bad:#ff7a6b;--bad-bg:#3a1c1a;--warn:#f2b84b;--warn-bg:#33270f;
-  --s1:#6ea0ff;--s2:#ff8a4c;--s3:#5fd07e;--s4:#a98bff;--thr:#ff7a6b;}}
+  --s1:#6ea0ff;--s2:#ff8a4c;--s3:#5fd07e;--s4:#a98bff;--s5:#3bc9db;--s6:#f783ac;--thr:#ff7a6b;}}
 :root[data-theme="dark"]{
   --bg:#0f1216;--panel:#171b21;--ink:#e8ebef;--muted:#9aa3b2;--line:#2a3039;--accent:#6ea0ff;
   --good:#4cc27a;--good-bg:#14301f;--bad:#ff7a6b;--bad-bg:#3a1c1a;--warn:#f2b84b;--warn-bg:#33270f;
-  --s1:#6ea0ff;--s2:#ff8a4c;--s3:#5fd07e;--s4:#a98bff;--thr:#ff7a6b;}
+  --s1:#6ea0ff;--s2:#ff8a4c;--s3:#5fd07e;--s4:#a98bff;--s5:#3bc9db;--s6:#f783ac;--thr:#ff7a6b;}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 Inter,system-ui,sans-serif}
 header{padding:20px 16px 8px;max-width:1240px;margin:0 auto;display:flex;flex-wrap:wrap;gap:8px 16px;align-items:baseline;justify-content:space-between}
@@ -71,7 +71,7 @@ select{background:var(--panel);color:var(--ink);border:1px solid var(--line);bor
     <h1>Monitor prezzi iPhone ricondizionati</h1>
     <div class="sub" id="updated">Caricamento…</div>
   </div>
-  <div class="sub">Amazon.it · Back Market · TrenDevice · controllo ogni ora</div>
+  <div class="sub">Amazon.it · Back Market · TrenDevice · Swappie · Refurbed · controllo ogni ora</div>
 </header>
 <main>
   <section class="panel controls">
@@ -131,7 +131,7 @@ select{background:var(--panel);color:var(--ink);border:1px solid var(--line);bor
 const $ = s => document.querySelector(s);
 const css = v => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
 const eur = v => v == null ? '–' : v.toLocaleString('it-IT', {style:'currency', currency:'EUR'});
-const SITE_COLORS = {'Amazon':'--s2','Back Market':'--s3','TrenDevice':'--s4'};
+const SITE_COLORS = {'Amazon':'--s2','Back Market':'--s3','TrenDevice':'--s4','Swappie':'--s5','Refurbed':'--s6'};
 const RANK = {eccellente:3, premium:4};
 const SIMS = [['any','Qualsiasi'],['esim','solo eSIM'],['fisica','SIM fisica']];
 const GRADES = [['eccellente','Eccellente+'],['premium','Premium']];

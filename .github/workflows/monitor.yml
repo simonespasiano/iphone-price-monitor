@@ -1,13 +1,16 @@
-name: Monitor prezzi (ogni 3 ore)
+name: Monitor prezzi (ogni ora)
 
 on:
   schedule:
-    - cron: "30 2-23/3 * * *"  # ogni 3 ore al minuto 30 (UTC): in Italia 15:30, 18:30, 21:30, 00:30, 03:30, 06:30, 09:30, 12:30 (ora legale: +1)
+    # GitHub ritarda e a volte salta i cron (dal 21 al 27/11 sono partiti 17 giri su 56 previsti).
+    # Due orari per ora a minuti "dispari": se uno salta, parte l'altro. I dati della stessa ora si sovrascrivono.
+    - cron: "7 * * * *"
+    - cron: "37 * * * *"
   workflow_dispatch:
     inputs:
       sites:
         description: "Siti da controllare (separati da virgola)"
-        default: "amazon,backmarket,trendevice"
+        default: "amazon,backmarket,trendevice,swappie,refurbed"
 
 permissions:
   contents: write
@@ -51,7 +54,12 @@ jobs:
   run:
     needs: gate
     if: needs.gate.outputs.active == 'true'
-    runs-on: ubuntu-latest
+    # Per leggere Back Market serve un IP domestico: registra il tuo PC come self-hosted runner e crea la
+    # variabile di repository MONITOR_RUNNER = self-hosted (Settings → Secrets and variables → Actions → Variables).
+    runs-on: ${{ vars.MONITOR_RUNNER || 'ubuntu-latest' }}
+    defaults:
+      run:
+        shell: bash
     timeout-minutes: 40
     steps:
       - uses: actions/checkout@v4
@@ -72,7 +80,7 @@ jobs:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
           DEBUG_SCREENSHOTS: "1"
-        run: python -m monitor.run --sites "${{ github.event.inputs.sites || 'amazon,backmarket,trendevice' }}"
+        run: python -m monitor.run --sites "${{ github.event.inputs.sites || 'amazon,backmarket,trendevice,swappie,refurbed' }}"
       - name: Screenshot diagnostica
         if: always()
         uses: actions/upload-artifact@v4

@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 from monitor.config import load_config
 from monitor.normalize import Offer, parse_price, grade_rank, sim_from_text, model_from_title, color_from_title, SIM_ESIM, SIM_FISICA
 from monitor.rules import is_eligible, matching_threshold
-from monitor.scrapers import amazon, backmarket, trendevice
+from monitor.scrapers import amazon, backmarket, refurbed, swappie, trendevice
 from monitor.alerts import select_new_hits
 
 CFG = load_config()
@@ -88,8 +88,10 @@ def test_amazon_aod_and_eligibility():
     assert res == [True, False, False, True]          # Wcell 50% positivi, Phone-Buddy grado buono
     for o, ok in zip(offers, res):
         o.eligible = ok
-    assert matching_threshold(offers[0], CFG) is None  # 568,64 non è < 550
-    assert matching_threshold(offers[3], CFG)["price"] == 550
+    assert matching_threshold(offers[0], CFG) is None  # 568,64 è sopra la soglia del 15 Pro 128
+    assert matching_threshold(offers[3], CFG) is None  # 549,99 anche
+    offers[3].price = 539.0
+    assert matching_threshold(offers[3], CFG)["price"] == 540
 
 
 def test_thresholds_sim_specific():
@@ -111,13 +113,13 @@ def test_thresholds_sim_specific():
 
 def test_alert_dedupe():
     now = datetime(2026, 11, 22, 10, tzinfo=timezone.utc)
-    o = Offer("Amazon", "15pro-128", 128, SIM_FISICA, "Titanio Blu", "Eccellente", 545, "X", 95)
+    o = Offer("Amazon", "15pro-128", 128, SIM_FISICA, "Titanio Blu", "Eccellente", 539, "X", 95)
     o.eligible = True
     assert len(select_new_hits([o], CFG, now, {})) == 1
     key = "Amazon|15pro-128|fisica|Eccellente|Titanio Blu|X"
-    state = {key: {"ts": "2026-11-22T05:00:00+00:00", "price": 545}}
+    state = {key: {"ts": "2026-11-22T05:00:00+00:00", "price": 539}}
     assert select_new_hits([o], CFG, now, state) == []        # già avvisato da poco
-    o.price = 539
+    o.price = 533
     assert len(select_new_hits([o], CFG, now, state)) == 1     # calo ulteriore ≥ 5 €
 
 
@@ -133,3 +135,27 @@ def test_trendevice_listing_inline_format():
         (128, "C Smart", 719.9), (128, "A Eccellente", 759.9), (256, "A+ Come nuovo", 999.9)]
     assert items[1]["color"] == "Titanio naturale" and items[0]["preorder"]
     assert sim_from_text(items[2]["sim"]) == SIM_ESIM
+
+
+def test_refurbed_listing():
+    """Testo della pagina Refurbed (varianti suggerite), 20/11/2026."""
+    txt = ("iPhone 15 Pro bianco 128 GB Molto buono 568,99 € placeholder\n"
+           "iPhone 15 Pro nero 256 GB Molto buono 647,99 € Più spazio di archiviazione\n"
+           "iPhone 15 Pro blu 256 GB Ottimo 681,99 € 1+ miglioramenti\n"
+           "iPhone 15 Pro grigio 128 GB Ottimo 765,99 € Aspetto migliore\n"
+           "iPhone 15 Pro Max nero 256 GB Ottimo 802,99 €\n"
+           "iPhone 16 Pro grigio 256 GB Ottimo 759,81 €")
+    items = refurbed.parse_listing(txt, "iPhone 15 Pro")
+    got = sorted((i["storage"], i["grade_src"], i["color"], i["price"]) for i in items)
+    assert got == [(128, "Molto buono", "bianco", 568.99), (128, "Ottimo", "grigio", 765.99),
+                   (256, "Molto buono", "nero", 647.99), (256, "Ottimo", "blu", 681.99)]
+    assert refurbed.GRADE_MAP["ottimo"] == "Eccellente" and grade_rank(refurbed.GRADE_MAP["molto buono"]) < 3
+
+
+def test_swappie_selected():
+    txt = ("Swappie Care\nSolo 1 pezzi disponibili\n256 GB | Titanio naturale | Molto buono\n€ 609\n€ 629\n€ -20\n"
+           "Prezzo di lancio Apple: € 1 369\ntasse incl.")
+    assert swappie.parse_selected(txt) == {"storage": 256, "color": "Titanio naturale", "grade": "Molto buono", "price": 609.0}
+    txt2 = "128 GB | Titanio bianco | Premium\nPrezzo a tempo limitato\n€ 1 099\nPrezzo di lancio Apple: € 1 239"
+    assert swappie.parse_selected(txt2)["price"] == 1099.0
+    assert swappie.parse_selected("Oops, sfortunatamente questo prodotto non è più disponibile") is None
