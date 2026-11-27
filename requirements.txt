@@ -1,4 +1,5 @@
 playwright>=1.48
 PyYAML==6.0.2
+tzdata  # fusi orari su Windows (PC di casa)
 requests==2.32.3
 pytest==8.3.3
