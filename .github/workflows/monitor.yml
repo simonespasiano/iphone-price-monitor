@@ -64,13 +64,30 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
+        if: runner.environment == 'github-hosted'
         with:
           python-version: "3.12"
           cache: pip
+      # Sul PC di casa (self-hosted) si usa il Python già installato: setup-python su Windows
+      # esegue uno script PowerShell che la policy predefinita di Windows blocca.
+      - name: Python del PC
+        if: runner.environment != 'github-hosted'
+        run: |
+          if ! command -v python >/dev/null || ! python --version >/dev/null 2>&1; then
+            echo "::error::Python non trovato sul PC: installa Python 3.12 da python.org spuntando 'Add python.exe to PATH', poi riavvia il servizio del runner."
+            exit 1
+          fi
+          python --version
+          python -m venv .venv
+          if [ -d .venv/Scripts ]; then echo "$PWD/.venv/Scripts" >> "$GITHUB_PATH"; else echo "$PWD/.venv/bin" >> "$GITHUB_PATH"; fi
       - name: Dipendenze
         run: |
-          pip install -r requirements.txt
-          python -m playwright install --with-deps chromium
+          python -m pip install -q -r requirements.txt
+          if [ "${{ runner.environment }}" = "github-hosted" ]; then
+            python -m playwright install --with-deps chromium
+          else
+            python -m playwright install chromium
+          fi
       - name: Etichetta "offerta"
         env: { GH_TOKEN: "${{ github.token }}" }
         run: gh label create offerta --color 1a8a4a --description "Offerta sotto soglia" 2>/dev/null || true
