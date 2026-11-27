@@ -1396,9 +1396,9 @@ ts,site,model,storage,sim,color,grade,grade_rank,price,seller,seller_positive,ba
 2026-11-27T13:00:00Z,Amazon,15pro-256,256,fisica,Titanio Naturale,Eccellente,3,722.0,COMENOVO,17,≥80% (Amazon Renewed),12,finale,0,non idonea: venditore 17%,https://www.amazon.it/dp/B0CVJS2V8B?aod=1
 2026-11-27T13:00:00Z,Amazon,16pro-256,256,fisica,Titanio Naturale,Premium,4,895.0,Phone-Buddy,88,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0DHYD5ZWJ?aod=1
 2026-11-27T13:00:00Z,Amazon,16pro-256,256,fisica,Titanio Naturale,Accettabile,1,735.0,Loop-Mobile EU,76,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 76%",https://www.amazon.it/dp/B0DHYD5ZWJ?aod=1
-2026-11-27T13:00:00Z,Amazon,16pro-256,256,fisica,Titanio Naturale,Eccellente,3,748.0,ELIAN GROUP SRL,100,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0DHYD5ZWJ?aod=1
 2026-11-27T13:00:00Z,Amazon,16pro-256,256,fisica,Titanio Naturale,Accettabile,1,749.0,Nest Green,41,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 41%",https://www.amazon.it/dp/B0DHYD5ZWJ?aod=1
 2026-11-27T13:00:00Z,Amazon,16pro-256,256,fisica,Titanio Naturale,Eccellente,3,749.0,Fabag SRL,99,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0DHYD5ZWJ?aod=1
+2026-11-27T13:00:00Z,Amazon,16pro-256,256,fisica,Titanio Naturale,Eccellente,3,751.0,ELIAN GROUP SRL,100,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0DHYD5ZWJ?aod=1
 2026-11-27T13:00:00Z,Amazon,16pro-256,256,fisica,Titanio Naturale,Eccellente,3,763.0,KRIPNOVA,96,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0DHYD5ZWJ?aod=1
 2026-11-27T13:00:00Z,Amazon,16pro-256,256,fisica,Titanio Naturale,Eccellente,3,799.0,SEEPPLE,81,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0DHYD5ZWJ?aod=1
 2026-11-27T13:00:00Z,Amazon,16pro-256,256,fisica,Titanio Naturale,Accettabile,1,800.99,Geekmarket tech,50,≥80% (Amazon Renewed),12,finale,0,"spedizione 4.99 €; non idonea: grado, venditore 50%",https://www.amazon.it/dp/B0DHYD5ZWJ?aod=1
@@ -1428,7 +1428,6 @@ ts,site,model,storage,sim,color,grade,grade_rank,price,seller,seller_positive,ba
 2026-11-27T13:00:00Z,Amazon,15pro-256,256,fisica,Titanio Bianco,Eccellente,3,750.0,Eniro Mall,29,≥80% (Amazon Renewed),12,finale,0,non idonea: venditore 29%,https://www.amazon.it/dp/B0CVJXXPFL?aod=1
 2026-11-27T13:00:00Z,Amazon,15pro-256,256,fisica,Titanio Bianco,Accettabile,1,749.99,Geekmarket tech,50,≥80% (Amazon Renewed),12,finale,0,"spedizione 4.99 €; non idonea: grado, venditore 50%",https://www.amazon.it/dp/B0CVJXXPFL?aod=1
 2026-11-27T13:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Eccellente,3,580.0,Phone-Buddy,88,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
-2026-11-27T13:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Accettabile,1,529.0,Nest Green,41,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 41%",https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
 2026-11-27T13:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Accettabile,1,573.0,Furbie Store,50,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 50%",https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
 2026-11-27T13:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Accettabile,1,580.0,Loop-Mobile EU,76,≥80% (Amazon Renewed),12,finale,0,"non idonea: grado, venditore 76%",https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
 2026-11-27T13:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Eccellente,3,600.0,Handypoint UG ( Haftungsbeschränkt ),,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
@@ -1438,6 +1437,7 @@ ts,site,model,storage,sim,color,grade,grade_rank,price,seller,seller_positive,ba
 2026-11-27T13:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Buono,2,618.0,rebuy recommerce GmbH IT,83,≥80% (Amazon Renewed),12,finale,0,non idonea: grado,https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
 2026-11-27T13:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Accettabile,1,619.49,Ringy,37,≥80% (Amazon Renewed),12,finale,0,"spedizione 14.49 €; non idonea: grado, venditore 37%",https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
 2026-11-27T13:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Eccellente,3,620.0,Welback!,90,≥80% (Amazon Renewed),12,finale,1,,https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
+2026-11-27T13:00:00Z,Amazon,15pro-128,128,fisica,Titanio Naturale,Eccellente,3,620.0,Eniro Mall,29,≥80% (Amazon Renewed),12,finale,0,non idonea: venditore 29%,https://www.amazon.it/dp/B0CVJ8QRF6?aod=1
 2026-11-27T13:00:00Z,TrenDevice,16pro-128,128,esim,Colore a sorpresa,Accettabile,1,769.9,TrenDevice,,,12,elenco,0,preordine; non idonea: grado,https://www.trendevice.com/prodotti/iphone/serie-16/iphone-16-pro/
 2026-11-27T13:00:00Z,TrenDevice,16pro-128,128,fisica,Colore a sorpresa,Accettabile,1,779.9,TrenDevice,,,12,elenco,0,preordine; non idonea: grado,https://www.trendevice.com/prodotti/iphone/serie-16/iphone-16-pro/
 2026-11-27T13:00:00Z,TrenDevice,16pro-128,128,esim,Colore a sorpresa,Buono,2,789.9,TrenDevice,,,12,elenco,0,preordine; non idonea: grado,https://www.trendevice.com/prodotti/iphone/serie-16/iphone-16-pro/
@@ -1471,15 +1471,14 @@ ts,site,model,storage,sim,color,grade,grade_rank,price,seller,seller_positive,ba
 2026-11-27T13:00:00Z,TrenDevice,15pro-256,256,fisica,Titanio Nero,Eccellente,3,769.0,TrenDevice,,,12,elenco,1,,https://www.trendevice.com/prodotti/iphone/serie-15/iphone-15-pro/
 2026-11-27T13:00:00Z,TrenDevice,15pro-256,256,fisica,Titanio Naturale,Premium,4,799.9,TrenDevice,,,12,elenco,1,,https://www.trendevice.com/prodotti/iphone/serie-15/iphone-15-pro/
 2026-11-27T13:00:00Z,Swappie,16pro-128,128,fisica,Titanio naturale,Eccellente,3,729.0,Swappie,,≥86%,12,selettore,1,prezzo calcolato dal supplemento del grado; SIM da verificare,https://swappie.com/it/modello/iphone-16-pro/
-2026-11-27T13:00:00Z,Swappie,15pro-256,256,fisica,Titanio nero,Eccellente,3,649.0,Swappie,,≥86%,12,selettore,1,prezzo calcolato dal supplemento del grado; SIM da verificare,https://swappie.com/it/modello/iphone-15-pro/
 2026-11-27T13:00:00Z,Refurbed,16pro-128,128,esim,Grigio,Accettabile,1,684.4,Refurbed,,non dichiarata,12,elenco,0,grado Refurbed: Buono; SIM da verificare sulla pagina; non idonea: grado,https://www.refurbed.it/p/iphone-16-pro/
+2026-11-27T13:00:00Z,Refurbed,16pro-256,256,esim,Nero,Buono,2,714.0,Refurbed,,non dichiarata,12,elenco,0,grado Refurbed: Molto buono; SIM da verificare sulla pagina; non idonea: grado,https://www.refurbed.it/p/iphone-16-pro/
 2026-11-27T13:00:00Z,Refurbed,16pro-128,128,esim,Bianco,Eccellente,3,725.78,Refurbed,,non dichiarata,12,elenco,1,grado Refurbed: Ottimo; SIM da verificare sulla pagina,https://www.refurbed.it/p/iphone-16-pro/
-2026-11-27T13:00:00Z,Refurbed,16pro-256,256,esim,Nero,Buono,2,729.01,Refurbed,,non dichiarata,12,elenco,0,grado Refurbed: Molto buono; SIM da verificare sulla pagina; non idonea: grado,https://www.refurbed.it/p/iphone-16-pro/
 2026-11-27T13:00:00Z,Refurbed,16pro-256,256,esim,Nero,Accettabile,1,730.9,Refurbed,,non dichiarata,12,elenco,0,grado Refurbed: Buono; SIM da verificare sulla pagina; non idonea: grado,https://www.refurbed.it/p/iphone-16-pro/
 2026-11-27T13:00:00Z,Refurbed,16pro-256,256,esim,Grigio,Buono,2,752.07,Refurbed,,non dichiarata,12,elenco,0,grado Refurbed: Molto buono; SIM da verificare sulla pagina; non idonea: grado,https://www.refurbed.it/p/iphone-16-pro/
 2026-11-27T13:00:00Z,Refurbed,16pro-256,256,esim,Bianco,Buono,2,779.0,Refurbed,,non dichiarata,12,elenco,0,grado Refurbed: Molto buono; SIM da verificare sulla pagina; non idonea: grado,https://www.refurbed.it/p/iphone-16-pro/
 2026-11-27T13:00:00Z,Refurbed,16pro-256,256,esim,Nero,Eccellente,3,806.9,Refurbed,,non dichiarata,12,elenco,1,grado Refurbed: Ottimo; SIM da verificare sulla pagina,https://www.refurbed.it/p/iphone-16-pro/
-2026-11-27T13:00:00Z,Refurbed,16pro-256,256,esim,Marrone,Eccellente,3,820.0,Refurbed,,non dichiarata,12,elenco,1,grado Refurbed: Ottimo; SIM da verificare sulla pagina,https://www.refurbed.it/p/iphone-16-pro/
 2026-11-27T13:00:00Z,Refurbed,15pro-128,128,esim,Blu,Buono,2,565.0,Refurbed,,non dichiarata,12,elenco,0,grado Refurbed: Molto buono; SIM da verificare sulla pagina; non idonea: grado,https://www.refurbed.it/p/iphone-15-pro/
 2026-11-27T13:00:00Z,Refurbed,15pro-256,256,esim,Blu,Buono,2,589.99,Refurbed,,non dichiarata,12,elenco,0,grado Refurbed: Molto buono; SIM da verificare sulla pagina; non idonea: grado,https://www.refurbed.it/p/iphone-15-pro/
-2026-11-27T13:00:00Z,Refurbed,15pro-256,256,esim,Nero,Eccellente,3,729.99,Refurbed,,non dichiarata,12,elenco,1,grado Refurbed: Ottimo; SIM da verificare sulla pagina,https://www.refurbed.it/p/iphone-15-pro/
+2026-11-27T13:00:00Z,Refurbed,15pro-256,256,esim,Nero,Premium,4,815.0,Refurbed,,non dichiarata,12,elenco,1,grado Refurbed: Premium; SIM da verificare sulla pagina,https://www.refurbed.it/p/iphone-15-pro/
+2026-11-27T13:00:00Z,Refurbed,15pro-256,256,esim,Bianco,Premium,4,829.99,Refurbed,,non dichiarata,12,elenco,1,grado Refurbed: Premium; SIM da verificare sulla pagina,https://www.refurbed.it/p/iphone-15-pro/
