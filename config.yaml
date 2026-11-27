@@ -15,16 +15,29 @@ models:
     label: iPhone 16 Pro 128GB
     model: iPhone 16 Pro
     storage: 128
+  - key: 16pro-256
+    label: iPhone 16 Pro 256GB
+    model: iPhone 16 Pro
+    storage: 256
   - key: 15pro-128
     label: iPhone 15 Pro 128GB
     model: iPhone 15 Pro
     storage: 128
+  - key: 15pro-256
+    label: iPhone 15 Pro 256GB
+    model: iPhone 15 Pro
+    storage: 256
 
 # Soglie "offerta interessante" (prezzo totale). sim: esim | fisica | any ; grade: grado minimo
 # op: "<" oppure "<="
 thresholds:
-  - {model: 16pro-128, sim: any,   grade: eccellente, op: "<",  price: 630}
-  - {model: 15pro-128, sim: any,   grade: eccellente, op: "<",  price: 550}
+  # Soglie "offerta lampo" (aggiornate il 27/11/2026). La prima soglia rispettata fa scattare l'avviso.
+  - {model: 16pro-128, sim: esim,   grade: eccellente, op: "<=", price: 600}
+  - {model: 16pro-128, sim: fisica, grade: eccellente, op: "<=", price: 650}
+  - {model: 16pro-128, sim: any,    grade: premium,    op: "<=", price: 690}
+  - {model: 16pro-256, sim: any,    grade: eccellente, op: "<=", price: 690}
+  - {model: 15pro-256, sim: fisica, grade: eccellente, op: "<=", price: 590}
+  - {model: 15pro-128, sim: any,    grade: eccellente, op: "<=", price: 540}
 
 sources:
   amazon:
@@ -62,9 +75,24 @@ sources:
       - {url: "https://www.trendevice.com/prodotti/iphone/serie-16/iphone-16-pro/", model: iPhone 16 Pro}
       - {url: "https://www.trendevice.com/prodotti/iphone/serie-15/iphone-15-pro/", model: iPhone 15 Pro}
 
+  swappie:
+    enabled: true
+    # Pagina modello: lo scraper seleziona memoria e condizione e legge il prezzo mostrato
+    pages:
+      - {url: "https://swappie.com/it/modello/iphone-16-pro/", model: iPhone 16 Pro}
+      - {url: "https://swappie.com/it/modello/iphone-15-pro/", model: iPhone 15 Pro}
+    storages: [128, 256]
+    grades: [Eccellente, Premium]
+  refurbed:
+    enabled: true
+    # Elenco "configurazioni suggerite" (Ottimo = Eccellente, Premium = Come nuovo)
+    pages:
+      - {url: "https://www.refurbed.it/p/iphone-16-pro/", model: iPhone 16 Pro}
+      - {url: "https://www.refurbed.it/p/iphone-15-pro/", model: iPhone 15 Pro}
+
 alerts:
   github_issue: true          # apre/aggiorna una issue con etichetta "offerta"
   telegram: true              # attivo solo se esistono i secret TELEGRAM_BOT_TOKEN e TELEGRAM_CHAT_ID
-  telegram_every_run: true    # riepilogo su Telegram a ogni verifica (false = solo avvisi sotto soglia)
+  telegram_every_run: false   # false = Telegram solo quando c'è un'offerta sotto soglia (true = riepilogo a ogni giro)
   repeat_after_hours: 24      # non ripete lo stesso avviso prima di N ore...
   repeat_if_drop_eur: 5       # ...salvo un ulteriore calo di almeno N euro
