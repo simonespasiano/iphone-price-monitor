@@ -169,3 +169,12 @@ w): giro Amazon saltato",0
 2026-11-27T01:00:00Z,Back Market,*,bloccato,0,verifica anti-bot del sito,8
 2026-11-27T01:00:00Z,TrenDevice,iPhone 16 Pro,ok,7,,7
 2026-11-27T01:00:00Z,TrenDevice,iPhone 15 Pro,ok,6,,6
+2026-11-27T06:00:00Z,Swappie,iPhone 16 Pro,vuoto,0,"non trovati: 128 GB, 256 GB",4
+2026-11-27T06:00:00Z,Swappie,iPhone 15 Pro,vuoto,0,"non trovati: 128 GB, 256 GB",3
+2026-11-27T06:00:00Z,Refurbed,iPhone 16 Pro,vuoto,0,,7
+2026-11-27T06:00:00Z,Refurbed,iPhone 15 Pro,vuoto,0,,6
+2026-11-27T06:00:00Z,Amazon,cap,bloccato,0,"CAP non impostato (CAP non impostato: Page.wait_for_selector: Timeout 15000ms exceeded.
+Call log:
+w): giro Amazon saltato",0
+2026-11-27T06:00:00Z,TrenDevice,iPhone 16 Pro,ok,14,,7
+2026-11-27T06:00:00Z,TrenDevice,iPhone 15 Pro,ok,12,,6
