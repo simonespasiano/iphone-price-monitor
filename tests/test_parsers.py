@@ -189,6 +189,6 @@ def test_swappie_grade_deltas_real():
     txt = ("Sconti Black Friday Reso gratuito fino al 15 Gennaio 2027 -\u2060€46 12 mesi di garanzia iPhone 16 Pro 128 GB | "
            "Titanio naturale | Buono Black Friday € 639 € 685 € -46 Prezzo di lancio Apple: € 1 239 Capacità 128 GB 256 GB + € 100 "
            "512 GB 1 TB + € 290 Condizione Scopri di più Buono Molto buono Eccellente + € 90 Premium La nostra scelta più "
-           "conveniente. Batteria Scopri di più Standard Nuova")
+           "conveniente. Batteria Scopri di più Standard Nuova Colore: Titanio naturale Titanio nero Esaurito Titanio bianco")
     assert swappie.parse_selected(txt) == {"storage": 128, "color": "Titanio naturale", "grade": "Buono", "price": 639.0}
     assert swappie.parse_grade_deltas(txt) == [{"storage": 128, "color": "Titanio naturale", "grade": "Eccellente", "price": 729.0}]

@@ -27,7 +27,7 @@ def flatten(text: str) -> str:
 def parse_selected(text: str) -> dict | None:
     """Configurazione mostrata e suo prezzo; None se non disponibile o non leggibile."""
     flat = flatten(text)
-    if re.search(r"non è più disponibile|esaurit", flat, re.I):
+    if re.search(r"non è più disponibile", flat, re.I):   # "Esaurito" compare anche accanto ad altri colori
         return None
     m = SUMMARY.search(flat)
     if not m:
