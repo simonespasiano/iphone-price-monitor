@@ -159,3 +159,16 @@ def test_swappie_selected():
     txt2 = "128 GB | Titanio bianco | Premium\nPrezzo a tempo limitato\n€ 1 099\nPrezzo di lancio Apple: € 1 239"
     assert swappie.parse_selected(txt2)["price"] == 1099.0
     assert swappie.parse_selected("Oops, sfortunatamente questo prodotto non è più disponibile") is None
+
+
+def test_refurbed_configurator():
+    txt = ("⚡ Offerta Flash! Risparmia l'8% EXTRA sulle serie iPhone 16 e 17 con il codice IPHONE8OFF · Acquista QUI ora "
+           "Home Prodotti iPhone 16 Pro 128 GB | Dual-SIM (2 x eSIM) | Titanio deserto (4,8/5) Immagine a solo scopo "
+           "illustrativo Scegli grado estetico (Info) Molto buono Ottimo Più venduto Premium Come nuovo \n695,62 €\nNuovo: 1.199,00 €")
+    sel = refurbed.parse_selected(txt)
+    assert sel["storage"] == 128 and sel["price"] == 695.62 and sel["color"] == "Titanio deserto"
+    assert sel["coupon"] == {"pct": 8, "code": "IPHONE8OFF"}
+    assert sim_from_text(sel["sim_text"]) == SIM_ESIM
+    txt15 = txt.replace("iPhone 16 Pro 128 GB | Dual-SIM (2 x eSIM)", "iPhone 15 Pro 128 GB | Dual-SIM (eSIM, Nano-SIM)")
+    sel15 = refurbed.parse_selected(txt15)
+    assert sel15["coupon"] is None and sim_from_text(sel15["sim_text"]) == SIM_FISICA

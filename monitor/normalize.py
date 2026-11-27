@@ -84,6 +84,8 @@ def sim_from_text(text: str) -> str:
     t = (text or "").lower()
     if "dual sim fisica" in t:
         return SIM_DUAL
+    if "nano-sim" in t or "nano sim" in t:   # Refurbed: "Dual-SIM (eSIM, Nano-SIM)"
+        return SIM_FISICA
     if "no sim fisica" in t or "nessuno slot sim" in t or t.startswith("e-sim") or t.strip() == "esim":
         return SIM_ESIM
     if "fisica" in t or "sim card" in t or "slot sim" in t or "include slot" in t:

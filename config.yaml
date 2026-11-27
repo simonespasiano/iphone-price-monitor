@@ -85,7 +85,9 @@ sources:
     grades: [Eccellente, Premium]
   refurbed:
     enabled: true
-    # La pagina elenca le varianti come "iPhone 16 Pro nero 256 GB Ottimo 759,81 €"
+    # Configuratore: lo scraper clicca memoria e grado (Ottimo = Eccellente, Premium = Come nuovo)
+    storages: [128, 256]
+    grades: [Ottimo, Premium]
     pages:
       - {url: "https://www.refurbed.it/p/iphone-16-pro/", model: iPhone 16 Pro}
       - {url: "https://www.refurbed.it/p/iphone-15-pro/", model: iPhone 15 Pro}
