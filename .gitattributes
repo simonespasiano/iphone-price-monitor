@@ -1,0 +1,4 @@
+data/** text eol=lf
+docs/data/** text eol=lf
+*.py text eol=lf
+*.yaml text eol=lf
