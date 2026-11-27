@@ -115,7 +115,12 @@ jobs:
           if (Get-Command py -ErrorAction SilentlyContinue) {
             $py = 'py' ; $pyargs = @('-3')
             # preferisce una versione con pacchetti precompilati per tutte le dipendenze
-            foreach ($v in '3.12', '3.13', '3.14') { & py "-$v" --version *> $null; if ($LASTEXITCODE -eq 0) { $pyargs = @("-$v"); break } }
+            $ErrorActionPreference = 'Continue'
+            foreach ($v in '3.12', '3.13', '3.14') {
+              try { $null = & py "-$v" --version 2>&1 } catch { continue }
+              if ($LASTEXITCODE -eq 0) { $pyargs = @("-$v"); break }
+            }
+            $ErrorActionPreference = 'Stop'
           }
           elseif (Get-Command python -ErrorAction SilentlyContinue) { $py = 'python' ; $pyargs = @() }
           if (-not $py) {
